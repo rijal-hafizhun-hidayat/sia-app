@@ -31,9 +31,10 @@
                             <x-select-input class="w-full" id="hari" name="hari">
                                 <option selected disabled>--Pilih--</option>
                                 @foreach ($hari as $day)
-                                <option value="">{{ $day }}</option>
+                                <option value="{{ $day }}">{{ $day }}</option>
                                 @endforeach
                             </x-select-input>
+                            <x-input-error class="mt-2" :messages="$errors->get('hari')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="waktu_mulai" :value="'Waktu Mulai'" />

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Guru\GuruController;
+use App\Http\Controllers\Guru\Service\GuruServiceController;
 use App\Http\Controllers\Kelas\KelasController;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
 use App\Http\Controllers\Mapel\MapelController;
@@ -53,6 +55,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/mapel', [MapelServiceController::class, 'store'])->name('mapel.store');
     Route::put('/mapel/{id}', [MapelServiceController::class, 'update'])->name('mapel.update');
     Route::delete('/mapel/{id}', [MapelServiceController::class, 'destroy'])->name('mapel.destroy');
+
+    //route guru
+    //view guru
+    Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
+    Route::get('/guru/add', [GuruController::class, 'create'])->name('guru.add');
+
+    //service guru
+    Route::post('/guru', [GuruServiceController::class, 'store'])->name('guru.store');
 });
 
 require __DIR__.'/auth.php';

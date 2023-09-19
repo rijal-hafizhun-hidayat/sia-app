@@ -6,7 +6,6 @@
             </div>
             <div>
                 <x-create-button :href="route('kelas.add')">Tambah Kelas</x-create-button>
-                {{-- <a href="{{ route('kelas.create') }}"><x-primary-button>Tambah Kelas</x-primary-button></a> --}}
             </div>
         </div>
     </x-slot>
