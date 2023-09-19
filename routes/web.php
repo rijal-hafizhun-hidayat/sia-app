@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     //view kelas
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
     Route::get('/kelas/add', [KelasController::class, 'add'])->name('kelas.add');
-    Route::get('/kelas/{id}', [KelasController::class, 'detail'])->name('kelas.detail');
+    Route::get('/kelas/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
     Route::get('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
 
     //service kelas
@@ -47,9 +47,12 @@ Route::middleware('auth')->group(function () {
     //view mapel
     Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
     Route::get('/mapel/add', [MapelController::class, 'create'])->name('mapel.add');
+    Route::get('/mapel/{id}', [MapelController::class, 'edit'])->name('mapel.edit');
 
     //service
     Route::post('/mapel', [MapelServiceController::class, 'store'])->name('mapel.store');
+    Route::put('/mapel/{id}', [MapelServiceController::class, 'update'])->name('mapel.update');
+    Route::delete('/mapel/{id}', [MapelServiceController::class, 'destroy'])->name('mapel.destroy');
 });
 
 require __DIR__.'/auth.php';

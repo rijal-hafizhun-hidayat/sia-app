@@ -36,13 +36,9 @@ class KelasServiceController extends Controller
     }
 
     public function destroy($id){
-        try {
-            Kelas::destroy($id);
-        } catch (\Illuminate\Database\QueryException $e) {
-            $message = $e->getMessage();
-        }
+        Kelas::destroy($id);
         
 
-        return redirect()->route('kelas.index')->with('message', $message);
+        return redirect()->route('kelas.index');
     }
 }

@@ -7,17 +7,27 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-4">
-            <div class="bg-red-500 dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
-                <div class="p-6 text-white dark:text-gray-100">
-                    Data Kelas <span class="uppercase font-bold">{{ $kelas->nama }}</span> Tidak Aman Di Hapus. Silahkan hapus data mata pelajaran yang terkait dengan kelas <span class="uppercase font-bold">{{ $kelas->nama }}</span>
-                </div>
-            </div>
-
+            @if ($is_mapel != null)
+            <x-danger-delete-notif>
+                Data Kelas <span class="uppercase font-bold">{{ $kelas->nama }}</span> Tidak Aman Di Hapus. Silahkan hapus data yang terkait dengan data <span class="uppercase font-bold">{{ $kelas->nama }}</span>
+            </x-danger-delete-notif>
+            @endif
+            <x-success-delete-notif>
+                Data kelas <span class="uppercase font-bold">{{ $kelas->nama }}</span> aman untuk dihapus
+            </x-success-delete-notif>
+            
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex flex-row">
-                        <div class="p-2"><p>Nama Kelas:</p></div>
-                        <div class="rounded bg-slate-300 ml-2 basis-1/3 p-2"><p class="uppercase">{{ $kelas->nama }}</p></div>
+                        <div class="py-2"><p>Nama Kelas:</p></div>
+                        <div class="rounded bg-slate-300 ml-2 basis-1/3 py-2"><p class="uppercase ml-3">{{ $kelas->nama }}</p></div>
+                    </div>
+                    <div class="flex flex-row-reverse">
+                        <form action="{{ route('kelas.destroy', ['id' => $kelas->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <x-danger-button class="mt-3">Hapus</x-danger-button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -50,7 +60,7 @@
                                     {{ $val->schedule_end_at }}
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
-                                    <form action="#" method="post">
+                                    <form action="{{ route('mapel.destroy', ['id' => $val->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <x-danger-button>Hapus</x-danger-button>

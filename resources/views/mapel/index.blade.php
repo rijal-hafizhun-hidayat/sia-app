@@ -39,19 +39,19 @@
                                     <p>{{ $mapel->hari }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
-                                    <p>{{ $mapel->schedule_start_at }}</p>
+                                    <p>{{ timeFormat($mapel->schedule_start_at) }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
-                                    <p>{{ $mapel->schedule_end_at }}</p>
+                                    <p>{{ timeFormat($mapel->schedule_end_at) }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <div class="flex flex-row space-x-4">
-                                        <form action="" method="POST">
+                                        <form action="{{ route('mapel.destroy', ['id' => $mapel->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <x-danger-button>Hapus</x-danger-button>
                                         </form>
-                                        <x-show-button>Ubah</x-show-button>
+                                        <x-show-button :href="route('mapel.edit', ['id' => $mapel->id])">Ubah</x-show-button>
                                     </div>
                                 </td>
                             </tr>

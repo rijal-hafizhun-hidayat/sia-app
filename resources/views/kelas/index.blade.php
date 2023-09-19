@@ -41,7 +41,7 @@
                                 <td class="border-t items-center px-6 py-4">
                                     <div class="flex flex-row space-x-4">
                                         <x-delete-button :href="route('kelas.delete', ['id' => $kelas->id])">Hapus</x-delete-button>
-                                        <x-show-button :href="route('kelas.detail', ['id' => $kelas->id])">Ubah</x-show-button>
+                                        <x-show-button :href="route('kelas.edit', ['id' => $kelas->id])">Ubah</x-show-button>
                                     </div>
                                 </td>
                             </tr>

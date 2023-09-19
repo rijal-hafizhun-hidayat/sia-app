@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Kelas;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
-use App\Http\Controllers\Mapel\Service\MapelServiceController;
-use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
@@ -19,15 +17,17 @@ class KelasController extends Controller
         return view('kelas/create');
     }
 
-    public function detail(KelasServiceController $kelas, $id){
-        return view('kelas/show', [
+    public function edit(KelasServiceController $kelas, $id){
+        return view('kelas/edit', [
             'kelas' => $kelas->getKelasById($id)
         ]);
     }
 
     public function delete(KelasServiceController $kelas, $id){
+        $isMapel = $kelas->getKelasById($id);
         return view('kelas/delete', [
-            'kelas' => $kelas->getKelasById($id)
+            'kelas' => $kelas->getKelasById($id),
+            'is_mapel' => $isMapel->mapel()->first()
         ]);
     }
 }
