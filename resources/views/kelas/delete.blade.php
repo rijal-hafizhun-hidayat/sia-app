@@ -11,16 +11,17 @@
             <x-danger-delete-notif>
                 Data Kelas <span class="uppercase font-bold">{{ $kelas->nama }}</span> Tidak Aman Di Hapus. Silahkan hapus data yang terkait dengan data <span class="uppercase font-bold">{{ $kelas->nama }}</span>
             </x-danger-delete-notif>
-            @endif
+            @else
             <x-success-delete-notif>
                 Data kelas <span class="uppercase font-bold">{{ $kelas->nama }}</span> aman untuk dihapus
             </x-success-delete-notif>
+            @endif
             
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex flex-row">
                         <div class="py-2"><p>Nama Kelas:</p></div>
-                        <div class="rounded bg-slate-300 ml-2 basis-1/3 py-2"><p class="uppercase ml-3">{{ $kelas->nama }}</p></div>
+                        <div class="rounded bg-slate-300 ml-2 basis-1/3 py-2"><p class="uppercase ml-3">{{ $kelas->nama }}</div>
                     </div>
                     <div class="flex flex-row-reverse">
                         <form action="{{ route('kelas.destroy', ['id' => $kelas->id]) }}" method="POST">

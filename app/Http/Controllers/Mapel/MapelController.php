@@ -8,7 +8,7 @@ use App\Http\Controllers\Mapel\Service\MapelServiceController;
 
 class MapelController extends Controller
 {
-    public $hari;
+    private $hari;
     public function __construct()
     {
         $this->hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];

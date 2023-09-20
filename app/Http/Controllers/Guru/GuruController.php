@@ -8,15 +8,37 @@ use App\Http\Controllers\Mapel\Service\MapelServiceController;
 
 class GuruController extends Controller
 {
-    public function index(GuruServiceController $guru){
+    private $guru;
+    private $mapel;
+    
+    public function __construct(){
+        $this->guru = new GuruServiceController;
+        $this->mapel = new MapelServiceController;
+    }
+
+    public function index(){
         return view('guru/index', [
-            'gurus' => $guru->getGuru()
+            'gurus' => $this->guru->getGuru()
         ]);
     }
 
-    public function create(MapelServiceController $mapel){
+    public function create(){
         return view('guru/create', [
-            'mapels' => $mapel->getMapel()
+            'mapels' => $this->mapel->getMapel()
+        ]);
+    }
+
+    public function edit($id){
+        return view('guru/edit', [
+            'guru' => $this->guru->getGuruById($id),
+            'mapels' => $this->mapel->getMapel()
+        ]);
+    }
+
+    public function detail($id){
+        return view('guru/detail', [
+            'guru' => $this->guru->getGuruById($id),
+            'mapels' => $this->mapel->getMapel()
         ]);
     }
 }

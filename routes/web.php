@@ -60,9 +60,12 @@ Route::middleware('auth')->group(function () {
     //view guru
     Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
     Route::get('/guru/add', [GuruController::class, 'create'])->name('guru.add');
+    Route::get('/guru/{id}', [GuruController::class, 'edit'])->name('guru.edit');
+    Route::get('/guru/detail/{id}', [GuruController::class, 'detail'])->name('guru.detail');
 
     //service guru
     Route::post('/guru', [GuruServiceController::class, 'store'])->name('guru.store');
+    Route::put('/guru/{id}', [GuruServiceController::class, 'update'])->name('guru.update');
 });
 
 require __DIR__.'/auth.php';

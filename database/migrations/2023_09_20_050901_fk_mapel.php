@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('guru', function (Blueprint $table) {
-            $table->foreign('mapel_id')->references('id')->on('mapel');
+        Schema::table('mapel', function (Blueprint $table) {
+            $table->foreign('kelas_id')->references('id')->on('kelas');
+            $table->foreign('guru_id')->references('id')->on('guru');
         });
     }
 
@@ -21,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guru');
+        Schema::dropIfExists('mapel');
     }
 };

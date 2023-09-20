@@ -19,8 +19,7 @@ class StoreGuruRequest extends FormRequest
     {
         return [
             'required' => 'wajib diisi',
-            'string' => 'format salah',
-            'numeric' => 'format salah'
+            'string' => 'format salah'
         ];
     }
 
@@ -32,8 +31,7 @@ class StoreGuruRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required|string',
-            'mapel_id' => 'required|numeric'
+            'nama' => 'required|string'
         ];
     }
 }
