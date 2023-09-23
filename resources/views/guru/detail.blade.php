@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <x-modal name="add-mapel-guru" focusable>
-                        <form method="post" action="#" class="p-6">
+                        <form method="post" action="{{ route('guru.mapel.update', ['id' => $guru->id]) }}" class="p-6">
                             @csrf
                             @method('PUT')
                             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">

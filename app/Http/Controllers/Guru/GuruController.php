@@ -38,7 +38,15 @@ class GuruController extends Controller
     public function detail($id){
         return view('guru/detail', [
             'guru' => $this->guru->getGuruById($id),
+            'guru_mapels' => $this->mapel->getMapelByGuruId($id),
             'mapels' => $this->mapel->getMapel()
+        ]);
+    }
+
+    public function delete($id){
+        return view('guru/delete', [
+            'guru' => $this->guru->getGuruById($id),
+            'mapels' => $this->mapel->getMapelByGuruId($id)
         ]);
     }
 }

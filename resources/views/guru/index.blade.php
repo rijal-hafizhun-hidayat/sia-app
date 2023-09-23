@@ -29,13 +29,9 @@
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <div class="flex flex-row space-x-4">
-                                        <form action="" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <x-danger-button>Hapus</x-danger-button>
-                                        </form>
+                                        <x-delete-button :href="route('guru.delete', ['id' => $guru->id])">Hapus</x-delete-button>
                                         <x-show-button :href="route('guru.edit', ['id' => $guru->id])">Ubah</x-show-button>
-                                        <x-detail-button :href="route('guru.detail', ['id' => $guru->id])">Detail</x-detail-button>
+                                        <x-detail-button :href="route('guru.mapel.detail', ['id' => $guru->id])">Detail</x-detail-button>
                                     </div>
                                 </td>
                             </tr>

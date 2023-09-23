@@ -16,6 +16,10 @@ class MapelServiceController extends Controller
         return Mapel::where('kelas_id', $id)->get();
     }
 
+    public function getMapelByGuruId($id){
+        return Mapel::where('guru_id', $id)->get();
+    }
+
     public function getMapelById($id){
         return Mapel::find($id);
     }

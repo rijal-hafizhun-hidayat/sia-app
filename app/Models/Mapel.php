@@ -18,4 +18,9 @@ class Mapel extends Model
     {
         return $this->belongsTo(Kelas::class);
     }
+
+    public function guru(): BelongsTo
+    {
+        return $this->belongsTo(Guru::class);
+    }
 }

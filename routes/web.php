@@ -61,11 +61,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
     Route::get('/guru/add', [GuruController::class, 'create'])->name('guru.add');
     Route::get('/guru/{id}', [GuruController::class, 'edit'])->name('guru.edit');
-    Route::get('/guru/detail/{id}', [GuruController::class, 'detail'])->name('guru.detail');
+    Route::get('/guru/detail/{id}', [GuruController::class, 'detail'])->name('guru.mapel.detail');
+    Route::get('/guru/delete/{id}', [GuruController::class, 'delete'])->name('guru.delete');
 
     //service guru
     Route::post('/guru', [GuruServiceController::class, 'store'])->name('guru.store');
     Route::put('/guru/{id}', [GuruServiceController::class, 'update'])->name('guru.update');
+    Route::put('/guru/mapel/{id}', [GuruServiceController::class, 'updateMapelByGuruId'])->name('guru.mapel.update');
+    Route::delete('/guru/{id}', [GuruServiceController::class, 'destroy'])->name('guru.destroy');
 });
 
 require __DIR__.'/auth.php';
