@@ -7,6 +7,8 @@ use App\Http\Controllers\Kelas\Service\KelasServiceController;
 use App\Http\Controllers\Mapel\MapelController;
 use App\Http\Controllers\Mapel\Service\MapelServiceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Siswa\Service\SiswaServiceController;
+use App\Http\Controllers\Siswa\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,7 +50,7 @@ Route::middleware('auth')->group(function () {
     //route mapel
     //view mapel
     Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
-    Route::get('/mapel/add', [MapelController::class, 'create'])->name('mapel.add');
+    Route::get('/mapel/add', [MapelController::class, 'add'])->name('mapel.add');
     Route::get('/mapel/{id}', [MapelController::class, 'edit'])->name('mapel.edit');
 
     //service
@@ -59,7 +61,7 @@ Route::middleware('auth')->group(function () {
     //route guru
     //view guru
     Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
-    Route::get('/guru/add', [GuruController::class, 'create'])->name('guru.add');
+    Route::get('/guru/add', [GuruController::class, 'add'])->name('guru.add');
     Route::get('/guru/{id}', [GuruController::class, 'edit'])->name('guru.edit');
     Route::get('/guru/detail/{id}', [GuruController::class, 'detail'])->name('guru.mapel.detail');
     Route::get('/guru/delete/{id}', [GuruController::class, 'delete'])->name('guru.delete');
@@ -69,6 +71,14 @@ Route::middleware('auth')->group(function () {
     Route::put('/guru/{id}', [GuruServiceController::class, 'update'])->name('guru.update');
     Route::put('/guru/mapel/{id}', [GuruServiceController::class, 'updateMapelByGuruId'])->name('guru.mapel.update');
     Route::delete('/guru/{id}', [GuruServiceController::class, 'destroy'])->name('guru.destroy');
+
+    //route siswa
+    //view siswa
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
+    Route::get('/siswa/add', [SiswaController::class, 'add'])->name('siswa.add');
+
+    //service siswa
+    Route::post('/siswa', [SiswaServiceController::class, 'store'])->name('siswa.store');
 });
 
 require __DIR__.'/auth.php';

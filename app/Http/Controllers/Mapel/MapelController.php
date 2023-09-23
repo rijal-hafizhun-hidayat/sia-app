@@ -13,13 +13,14 @@ class MapelController extends Controller
     {
         $this->hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
     }
+
     public function index(MapelServiceController $mapel){
         return view('mapel/index', [
             'mapels' => $mapel->getMapel()
         ]);
     }
 
-    public function create(KelasServiceController $kelas){
+    public function add(KelasServiceController $kelas){
         return view('mapel/create', [
             'kelass' => $kelas->getKelas(),
             'hari' => $this->hari

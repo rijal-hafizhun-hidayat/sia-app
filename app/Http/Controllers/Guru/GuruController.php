@@ -22,7 +22,7 @@ class GuruController extends Controller
         ]);
     }
 
-    public function create(){
+    public function add(){
         return view('guru/create', [
             'mapels' => $this->mapel->getMapel()
         ]);
