@@ -20,7 +20,8 @@ class StoreUsersRequest extends FormRequest
         return [
             'required' => 'wajib diisi',
             'string' => 'format salah',
-            'numeric' => 'format salah'
+            'numeric' => 'format salah',
+            'email' => 'format email salah'
         ];
     }
 
@@ -36,7 +37,8 @@ class StoreUsersRequest extends FormRequest
             'kelas_id' => 'sometimes|required|numeric',
             'role' => 'required|numeric',
             'username' => 'required|string',
-            'password' => 'required|string'
+            'password' => 'required|string',
+            'email' => 'email:rfc,dns'
         ];
     }
 }

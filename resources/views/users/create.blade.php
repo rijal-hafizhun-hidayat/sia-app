@@ -9,12 +9,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="#" method="POST" class="space-y-5">
+                    <form action="{{ route('users.store') }}" method="POST" class="space-y-5">
                         @csrf
                         <div class="max-w-xl">
                             <x-input-label for="nama" :value="'Nama Siswa / Nama Guru (dengan gelar)'" />
                             <x-text-input id="nama" name="nama" type="text" class="w-full" :value="old('nama')"/>
                             <x-input-error class="mt-2" :messages="$errors->get('nama')" />
+                        </div>
+                        <div class="max-w-xl">
+                            <x-input-label for="email" :value="'Email'" />
+                            <x-text-input id="email" name="email" type="email" class="w-full" :value="old('email')"/>
+                            <x-input-error class="mt-2" :messages="$errors->get('email')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="kelas_id" :value="'Kelas'" />
@@ -38,12 +43,12 @@
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="username" :value="'Username'"/>
-                            <x-text-input disabled class="w-full" id="username" name="username"/>
+                            <x-text-input class="w-full" id="username" name="username" readonly/>
                             <x-input-error class="mt-2" :messages="$errors->get('username')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="password" :value="'Password'"/>
-                            <x-text-input disabled class="w-full" id="password" name="password"/>
+                            <x-text-input class="w-full" id="password" name="password" readonly/>
                             <x-input-error class="mt-2" :messages="$errors->get('password')" />
                         </div>
                         <div class="max-w-xl">
@@ -63,7 +68,7 @@
 
             $('#role').change(function(){ 
                 $('#username').val(Math.floor(Math.random() * 9000 + 1000) + setRoleUsername($("#role").val()));
-                $('#password').val(Math.floor(Math.random() * 9000 + 1000));
+                $('#password').val(Math.floor(100000 + Math.random() * 900000));
             });
         })
     </script>

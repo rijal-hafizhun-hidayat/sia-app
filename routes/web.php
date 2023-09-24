@@ -9,6 +9,7 @@ use App\Http\Controllers\Mapel\Service\MapelServiceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Siswa\Service\SiswaServiceController;
 use App\Http\Controllers\Siswa\SiswaController;
+use App\Http\Controllers\Users\Service\UsersServiceController;
 use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,9 @@ Route::middleware('auth')->group(function () {
     //view users
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/add', [UsersController::class, 'add'])->name('users.add');
+
+    //service users
+    Route::post('/users', [UsersServiceController::class, 'store'])->name('users.store');
 });
 
 require __DIR__.'/auth.php';
