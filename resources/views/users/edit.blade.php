@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            tambah user
+            Ubah User
         </h2>
     </x-slot>
 
@@ -9,24 +9,25 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('users.store') }}" method="POST" class="space-y-5">
+                    <form action="{{ route('users.update', ['id' => $user->id]) }}" method="POST" class="space-y-5">
                         @csrf
+                        @method('PUT')
                         <div class="max-w-xl">
                             <x-input-label for="nama" :value="'Nama Siswa / Nama Guru (dengan gelar)'" />
-                            <x-text-input id="nama" name="nama" type="text" class="w-full" :value="old('nama')"/>
+                            <x-text-input id="nama" name="nama" type="text" class="w-full" :value="$user->nama"/>
                             <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="email" :value="'Email'" />
-                            <x-text-input id="email" name="email" type="email" class="w-full" :value="old('email')"/>
+                            <x-text-input id="email" name="email" type="email" class="w-full" :value="$user->email"/>
                             <x-input-error class="mt-2" :messages="$errors->get('email')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="kelas_id" :value="'Kelas'" />
                             <x-select-input class="w-full" id="kelas_id" name="kelas_id">
-                                <option selected disabled>-- Pilih --</option>
+                                <option disabled>-- Pilih --</option>
                                 @foreach ($kelas as $val)
-                                <option value="{{ $val->id }}">{{ $val->nama }}</option>
+                                <option @if ($user->kelas_id == $val->id) selected @endif value="{{ $val->id }}">{{ $val->nama }}</option>
                                 @endforeach
                             </x-select-input>
                             <x-input-error class="mt-2" :messages="$errors->get('kelas_id')" />
@@ -34,22 +35,17 @@
                         <div class="max-w-xl">
                             <x-input-label for="role" :value="'role'" />
                             <x-select-input class="w-full" name="role" id="role">
-                                <option disabled selected>-- Pilih --</option>
+                                <option disabled>-- Pilih --</option>
                                 @foreach ($role as $x => $val)
-                                <option value="{{ $x+1 }}">{{ $val }}</option>
+                                <option @if ($user->role == $x+1) selected @endif value="{{ $x+1 }}">{{ $val }}</option>
                                 @endforeach
                             </x-select-input>
                             <x-input-error class="mt-2" :messages="$errors->get('role')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="username" :value="'Username'"/>
-                            <x-text-input class="w-full" id="username" name="username" readonly/>
+                            <x-text-input class="w-full" id="username" name="username" :value="$user->username"/>
                             <x-input-error class="mt-2" :messages="$errors->get('username')" />
-                        </div>
-                        <div class="max-w-xl">
-                            <x-input-label for="password" :value="'Password'"/>
-                            <x-text-input class="w-full" id="password" name="password" readonly/>
-                            <x-input-error class="mt-2" :messages="$errors->get('password')" />
                         </div>
                         <div class="max-w-xl">
                             <x-primary-button>Submit</x-primary-button>

@@ -9,7 +9,7 @@ use App\Models\Mapel;
 class MapelServiceController extends Controller
 {
     public function getMapel(){
-        return Mapel::all();
+        return Mapel::latest()->paginate(10);
     }
 
     public function getMapelByKelasId($id){

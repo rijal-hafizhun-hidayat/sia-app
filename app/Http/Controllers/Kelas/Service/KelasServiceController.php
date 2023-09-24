@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class KelasServiceController extends Controller
 {
     public function getKelas(){
-        return Kelas::latest()->get();
+        return Kelas::latest()->paginate(10);
     }
 
     public function getKelasById($id){
