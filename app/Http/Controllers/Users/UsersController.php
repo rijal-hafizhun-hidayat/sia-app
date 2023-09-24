@@ -1,30 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Siswa;
+namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
-use App\Http\Controllers\Siswa\Service\SiswaServiceController;
 use Illuminate\Http\Request;
 
-class SiswaController extends Controller
+class UsersController extends Controller
 {
     private $kelas;
-    private $siswa;
     public function __construct()
     {
         $this->kelas = new KelasServiceController;
-        $this->siswa = new SiswaServiceController;
     }
-
     public function index(){
-        return view('siswa/index', [
-            'siswas' => $this->siswa->getSiswa()
-        ]);
+        return view('users/index');
     }
 
     public function add(){
-        return view('siswa/create', [
+        return view('users/create', [
             'kelas' => $this->kelas->getKelas()
         ]);
     }

@@ -15,17 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         Dashboard
                     </x-nav-link>
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                        User
+                    </x-nav-link>
                     <x-nav-link :href="route('kelas.index')" :active="request()->routeIs('kelas.*')">
                         Kelas
                     </x-nav-link>
                     <x-nav-link :href="route('mapel.index')" :active="request()->routeIs('mapel.*')">
                         Mata Pelajaran
-                    </x-nav-link>
-                    <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.*')">
-                        Guru
-                    </x-nav-link>
-                    <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.*')">
-                        Siswa
                     </x-nav-link>
                 </div>
             </div>
@@ -82,17 +79,14 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 Dashboard
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                User
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('kelas.index')" :active="request()->routeIs('kelas.*')">
                 Kelas
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('mapel.index')" :active="request()->routeIs('mapel.*')">
                 Mata Pelajaran
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.*')">
-                Guru
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.*')">
-                Siswa
             </x-responsive-nav-link>
         </div>
 

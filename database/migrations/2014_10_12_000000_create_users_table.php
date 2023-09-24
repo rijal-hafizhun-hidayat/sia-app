@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('password');
             $table->tinyInteger('role');
             $table->rememberToken();
-            $table->unsignedBigInteger('guru_id')->nullable();
-            $table->unsignedBigInteger('siswa_id')->nullable();
+            $table->unsignedBigInteger('mapel_id')->nullable();
+            $table->unsignedBigInteger('kelas_id')->nullable();
             $table->timestamps();
         });
     }

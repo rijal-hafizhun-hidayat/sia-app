@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->unsignedBigInteger('kelas_id');
-            $table->unsignedBigInteger('guru_id')->nullable();
             $table->string('hari');
             $table->time('schedule_start_at', $precision = 0);
             $table->time('schedule_end_at', $precision = 0);
