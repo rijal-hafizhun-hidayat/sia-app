@@ -13,8 +13,12 @@ class UsersServiceController extends Controller
         return User::latest()->paginate(3);
     }
 
-    public function getUserById($id){
+    public function getUsersById($id){
         return User::find($id);
+    }
+
+    public function getUsersByRole($role){
+        return User::where('role', $role)->get();
     }
 
     public function store(StoreUsersRequest $request){
@@ -22,9 +26,9 @@ class UsersServiceController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'role' => $request->role,
-            'kelas_id' => $request->kelas_id ?? null,
             'username' => $request->username,
-            'password' => $request->password
+            'password' => $request->password,
+            'kelas_id' => $request->kelas_id
         ]);
 
         return redirect()->route('users.index');
@@ -36,8 +40,8 @@ class UsersServiceController extends Controller
         $user->nama = $request->nama;
         $user->email = $request->email;
         $user->role = $request->role;
-        $user->kelas_id = $request->kelas_id;
         $user->username = $request->username;
+        $user->kelas_id = $request->kelas_id;
 
         $user->save();
 

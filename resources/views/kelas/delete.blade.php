@@ -23,6 +23,7 @@
                         <div class="py-2"><p>Nama Kelas:</p></div>
                         <div class="rounded bg-slate-300 ml-2 basis-1/3 py-2"><p class="uppercase ml-3">{{ $kelas->nama }}</div>
                     </div>
+                    @if ($is_mapel == null)
                     <div class="flex flex-row-reverse">
                         <form action="{{ route('kelas.destroy', ['id' => $kelas->id]) }}" method="POST">
                             @csrf
@@ -30,6 +31,8 @@
                             <x-danger-button class="mt-3">Hapus</x-danger-button>
                         </form>
                     </div>
+                    @endif
+                    
                 </div>
             </div>
 

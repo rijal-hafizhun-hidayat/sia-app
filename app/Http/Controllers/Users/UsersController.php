@@ -33,9 +33,15 @@ class UsersController extends Controller
 
     public function edit($id){
         return view('users/edit', [
-            'user' => $this->users->getUserById($id),
+            'user' => $this->users->getUsersById($id),
             'kelas' => $this->kelas->getKelas(),
             'role' => $this->role
+        ]);
+    }
+
+    public function detail($id){
+        return view('users/detail', [
+            'user' => $this->users->getUsersById($id)
         ]);
     }
 }

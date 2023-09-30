@@ -21,6 +21,7 @@
                                 <th class="pb-4 pt-6 px-6">Nama Mata Pelajaran</th>
                                 <th class="pb-4 pt-6 px-6">Kelas</th>
                                 <th class="pb-4 pt-6 px-6">Hari</th>
+                                <th class="pb-4 pt-6 px-6">Guru</th>
                                 <th class="pb-4 pt-6 px-6">Waktu Mulai</th>
                                 <th class="pb-4 pt-6 px-6">Waktu Selesai</th>
                                 <th class="pb-4 pt-6 px-6">Action</th>
@@ -37,6 +38,9 @@
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <p>{{ $mapel->hari }}</p>
+                                </td>
+                                <td class="border-t items-center px-6 py-4">
+                                    <p>{{ $mapel->user->nama }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <p>{{ timeFormat($mapel->schedule_start_at) }}</p>

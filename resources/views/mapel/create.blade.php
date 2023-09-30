@@ -27,6 +27,16 @@
                             <x-input-error class="mt-2" :messages="$errors->get('kelas_id')" />
                         </div>
                         <div class="max-w-xl">
+                            <x-input-label for="user_id" :value="'Guru'" />
+                            <x-select-input class="w-full" id="user_id" name="user_id">
+                                <option selected disabled>-- Pilih --</option>
+                                @foreach ($guru as $x)
+                                <option value="{{ $x->id }}">{{ $x->nama }}</option>
+                                @endforeach
+                            </x-select-input>
+                            <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
+                        </div>
+                        <div class="max-w-xl">
                             <x-input-label for="hari" :value="'Hari'" />
                             <x-select-input class="w-full" id="hari" name="hari">
                                 <option selected disabled>--Pilih--</option>

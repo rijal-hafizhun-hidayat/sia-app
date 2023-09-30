@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('mapel', function (Blueprint $table) {
-            $table->foreign('kelas_id')->references('id')->on('kelas');
-            $table->foreign('users_id')->references('id')->on('users');
+        Schema::create('tahun_ajaran', function (Blueprint $table) {
+            $table->id();
+            $table->string('tahun_ajaran');
+            $table->timestamps();
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mapel');
+        Schema::dropIfExists('tahun_ajaran');
     }
 };

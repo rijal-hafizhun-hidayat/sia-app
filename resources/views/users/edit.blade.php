@@ -23,16 +23,6 @@
                             <x-input-error class="mt-2" :messages="$errors->get('email')" />
                         </div>
                         <div class="max-w-xl">
-                            <x-input-label for="kelas_id" :value="'Kelas'" />
-                            <x-select-input class="w-full" id="kelas_id" name="kelas_id">
-                                <option disabled>-- Pilih --</option>
-                                @foreach ($kelas as $val)
-                                <option @if ($user->kelas_id == $val->id) selected @endif value="{{ $val->id }}">{{ $val->nama }}</option>
-                                @endforeach
-                            </x-select-input>
-                            <x-input-error class="mt-2" :messages="$errors->get('kelas_id')" />
-                        </div>
-                        <div class="max-w-xl">
                             <x-input-label for="role" :value="'role'" />
                             <x-select-input class="w-full" name="role" id="role">
                                 <option disabled>-- Pilih --</option>
@@ -41,6 +31,16 @@
                                 @endforeach
                             </x-select-input>
                             <x-input-error class="mt-2" :messages="$errors->get('role')" />
+                        </div>
+                        <div class="max-w-xl hidden" id="kelas">
+                            <x-input-label for="kelas_id" :value="'Kelas'" />
+                            <x-select-input class="w-full" name="kelas_id" id="kelas_id">
+                                <option disabled selected>-- Pilih --</option>
+                                @foreach ($kelas as $class)
+                                <option @if ($user->kelas_id == $class->id) selected @endif value="{{ $class->id }}">{{ $class->nama }}</option>
+                                @endforeach
+                            </x-select-input>
+                            <x-input-error class="mt-2" :messages="$errors->get('kelas_id')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="username" :value="'Username'"/>
@@ -57,6 +57,10 @@
     </div>
     <script type="module">
         $(document).ready(function(){
+            if($('#role').val() == 3){
+                $('#kelas').removeClass('hidden');
+            }
+            
             const setRoleUsername = (role) => {
                 const setUsername = [null, '@admin', '@guru', '@siswa']
                 return setUsername[role]
@@ -65,6 +69,13 @@
             $('#role').change(function(){ 
                 $('#username').val(Math.floor(Math.random() * 9000 + 1000) + setRoleUsername($("#role").val()));
                 $('#password').val(Math.floor(100000 + Math.random() * 900000));
+
+                if($('#role').val() == 3){
+                    $('#kelas').removeClass('hidden');
+                }
+                else{
+                    $('#kelas').addClass('hidden');
+                }
             });
         })
     </script>

@@ -28,6 +28,7 @@ class MapelServiceController extends Controller
         Mapel::create([
             'nama' => $request->nama,
             'kelas_id' => $request->kelas_id,
+            'user_id' => $request->user_id,
             'hari' => $request->hari,
             'schedule_start_at' => $request->waktu_mulai,
             'schedule_end_at' => $request->waktu_selesai,
@@ -53,6 +54,6 @@ class MapelServiceController extends Controller
     public function destroy($id){
         Mapel::destroy($id);
 
-        return redirect()->route('mapel.index');
+        return redirect()->back();
     }
 }

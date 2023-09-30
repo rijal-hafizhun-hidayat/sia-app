@@ -34,11 +34,11 @@ class StoreUsersRequest extends FormRequest
     {
         return [
             'nama' => 'required|string',
-            'kelas_id' => 'sometimes|required|numeric',
             'role' => 'required|numeric',
             'username' => 'required|string',
             'password' => 'required|string',
-            'email' => 'email:rfc,dns'
+            'email' => 'email:rfc,dns',
+            'kelas_id' => 'nullable|numeric'
         ];
     }
 }

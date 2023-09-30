@@ -43,6 +43,7 @@
                                             <x-danger-button>Hapus</x-danger-button>
                                         </form>
                                         <x-show-button :href="route('users.edit', ['id' => $user->id])">Ubah</x-show-button>
+                                        <x-detail-button :href="route('users.detail', ['id' => $user->id])">Detail</x-detail-button>
                                     </div>
                                 </td>
                             </tr>

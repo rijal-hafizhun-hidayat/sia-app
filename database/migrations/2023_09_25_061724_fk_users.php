@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('kelas_id')->references('id')->on('kelas');
-            $table->foreign('mapel_id')->references('id')->on('mapel');
         });
     }
 

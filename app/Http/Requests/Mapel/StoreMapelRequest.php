@@ -35,6 +35,7 @@ class StoreMapelRequest extends FormRequest
         return [
             'nama' => 'required|string',
             'kelas_id' => 'required|numeric',
+            'user_id' => 'required|numeric',
             'hari' => 'required|string',
             'waktu_mulai' => 'required|date_format:H:i',
             'waktu_selesai' => 'required|date_format:H:i'

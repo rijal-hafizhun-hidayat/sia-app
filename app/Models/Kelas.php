@@ -18,4 +18,9 @@ class Kelas extends Model
     {
         return $this->hasMany(Mapel::class);
     }
+
+    public function user(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }
