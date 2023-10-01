@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('mapel.index')" :active="request()->routeIs('mapel.*')">
                         Mata Pelajaran
                     </x-nav-link>
+                    <x-nav-link :href="route('tahun_ajaran.index')" :active="request()->routeIs('tahun_ajaran.*')">
+                        Tahun Ajaran
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -87,6 +90,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('mapel.index')" :active="request()->routeIs('mapel.*')">
                 Mata Pelajaran
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tahun_ajaran.index')" :active="request()->routeIs('tahun_ajaran.*')">
+                Tahun Ajaran
             </x-responsive-nav-link>
         </div>
 

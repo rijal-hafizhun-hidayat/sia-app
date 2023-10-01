@@ -5,6 +5,8 @@ use App\Http\Controllers\Kelas\Service\KelasServiceController;
 use App\Http\Controllers\Mapel\MapelController;
 use App\Http\Controllers\Mapel\Service\MapelServiceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TahunAjaran\Services\TahunAjaranServiceController;
+use App\Http\Controllers\TahunAjaran\TahunAjaranController;
 use App\Http\Controllers\Users\Service\UsersServiceController;
 use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +77,20 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [UsersServiceController::class, 'store'])->name('users.store');
         Route::put('/{id}', [UsersServiceController::class, 'update'])->name('users.update');
         Route::delete('/{id}', [UsersServiceController::class, 'destroy'])->name('users.destroy');
+    });
+
+    //route tahun ajaran
+    Route::prefix('tahun_ajaran')->group(function(){
+
+        //view tahun ajaran
+        Route::get('/', [TahunAjaranController::class, 'index'])->name('tahun_ajaran.index');
+        Route::get('/add', [TahunAjaranController::class, 'add'])->name('tahun_ajaran.add');
+        Route::get('/{id}', [TahunAjaranController::class, 'edit'])->name('tahun_ajaran.edit');
+
+        //service tahun ajaran
+        Route::post('/', [TahunAjaranServiceController::class, 'store'])->name('tahun_ajaran.store');
+        Route::put('/{id}', [TahunAjaranServiceController::class, 'update'])->name('tahun_ajaran.update');
+        Route::delete('/{id}', [TahunAjaranServiceController::class, 'destroy'])->name('tahun_ajaran.destroy');
     });
     
     
