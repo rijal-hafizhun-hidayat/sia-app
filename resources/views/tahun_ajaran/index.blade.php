@@ -26,7 +26,7 @@
                             @foreach ($tahun_ajarans as $tahun_ajaran)
                             <tr class="hover:bg-gray-100">
                                 <td class="border-t items-center px-6 py-4">
-                                    <p>{{ $tahun_ajaran->tahun_ajaran }}</p>
+                                    <p>{{ $tahun_ajaran->nama }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <div class="flex flex-row space-x-4">

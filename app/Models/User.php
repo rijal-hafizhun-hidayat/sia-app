@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Mapel::class);
     }
+
+    public function nilai(): HasMany
+    {
+        return $this->hasMany(Nilai::class);
+    }
 }

@@ -10,11 +10,15 @@ use App\Models\User;
 class UsersServiceController extends Controller
 {
     public function getUsers(){
-        return User::latest()->paginate(3);
+        return User::latest()->paginate(10);
     }
 
     public function getUsersById($id){
         return User::find($id);
+    }
+
+    public function getSiswa(){
+        return User::where('role', User::ROLE_SISWA)->paginate(10);
     }
 
     public function getUsersByRole($role){

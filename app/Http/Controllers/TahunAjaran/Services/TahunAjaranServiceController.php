@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TahunAjaran\StoreTahunAjaranRequest;
 use App\Http\Requests\TahunAjaran\UpdateTahunAjaranRequest;
 use App\Models\TahunAjaran;
-use Illuminate\Auth\Events\Validated;
 
 class TahunAjaranServiceController extends Controller
 {
@@ -20,7 +19,7 @@ class TahunAjaranServiceController extends Controller
 
     public function store(StoreTahunAjaranRequest $request){
         TahunAjaran::create([
-            'tahun_ajaran' => $request->tahun_ajaran
+            'nama' => $request->nama
         ]);
 
         return redirect()->route('tahun_ajaran.index');
@@ -29,7 +28,7 @@ class TahunAjaranServiceController extends Controller
     public function update(UpdateTahunAjaranRequest $request, $id){
         $tahunAjaran = TahunAjaran::find($id);
 
-        $tahunAjaran->tahun_ajaran = $request->tahun_ajaran;
+        $tahunAjaran->nama = $request->nama;
 
         $tahunAjaran->save();
 

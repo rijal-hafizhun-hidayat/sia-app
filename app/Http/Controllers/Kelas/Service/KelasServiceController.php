@@ -13,6 +13,10 @@ class KelasServiceController extends Controller
         return Kelas::latest()->paginate(10);
     }
 
+    public function getAll(){
+        return Kelas::all();
+    }
+
     public function getKelasById($id){
         return Kelas::find($id);
     }

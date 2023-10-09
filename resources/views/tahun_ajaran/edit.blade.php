@@ -13,9 +13,9 @@
                         @csrf
                         @method('PUT')
                         <div class="max-w-xl">
-                            <x-input-label for="tahun_ajaran" :value="'Tahun Ajaran'" />
-                            <x-text-input id="tahun_ajaran" name="tahun_ajaran" type="text" class="mt-1 w-full" :value="$tahun_ajaran->tahun_ajaran" required/>
-                            <x-input-error class="mt-2" :messages="$errors->get('tahun_ajaran')" />
+                            <x-input-label for="nama" :value="'Tahun Ajaran'" />
+                            <x-text-input id="nama" name="nama" type="text" class="mt-1 w-full" :value="$tahun_ajaran->nama" required/>
+                            <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                         </div>
                         <div class="max-w-xl">
                             <x-primary-button>Submit</x-primary-button>

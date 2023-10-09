@@ -4,6 +4,7 @@ use App\Http\Controllers\Kelas\KelasController;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
 use App\Http\Controllers\Mapel\MapelController;
 use App\Http\Controllers\Mapel\Service\MapelServiceController;
+use App\Http\Controllers\Nilai\NilaiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TahunAjaran\Services\TahunAjaranServiceController;
 use App\Http\Controllers\TahunAjaran\TahunAjaranController;
@@ -93,7 +94,18 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{id}', [TahunAjaranServiceController::class, 'destroy'])->name('tahun_ajaran.destroy');
     });
     
-    
+    //route nilai
+    Route::prefix('nilai')->group(function(){
+
+        //view nilai
+        Route::get('/', [NilaiController::class, 'index'])->name('nilai.index');
+        Route::get('/{user_id}/add', [NilaiController::class, 'add'])->name('nilai.add');
+        Route::get('/{id}', [NilaiController::class, 'score'])->name('nilai.score');
+        Route::get('/{user_id}/{id}/edit', [NilaiController::class, 'edit'])->name('nilai.edit');
+        Route::put('/{id}', [NilaiController::class, 'update'])->name('nilai.update');
+        Route::post('/', [NilaiController::class, 'store'])->name('nilai.store');
+        Route::delete('/{id}', [NilaiController::class, 'destroy'])->name('nilai.destroy');
+    });
 });
 
 require __DIR__.'/auth.php';

@@ -12,9 +12,9 @@
                     <form action="{{ route('tahun_ajaran.store') }}" method="POST" class="space-y-4">
                         @csrf
                         <div class="max-w-xl">
-                            <x-input-label for="tahun_ajaran" :value="'Tahun Ajaran'" />
-                            <x-text-input id="tahun_ajaran" name="tahun_ajaran" type="text" class="mt-1 w-full" :value="old('tahun_ajaran')" required/>
-                            <x-input-error class="mt-2" :messages="$errors->get('tahun_ajaran')" />
+                            <x-input-label for="nama" :value="'Tahun Ajaran'" />
+                            <x-text-input id="nama" name="nama" type="text" class="mt-1 w-full" :value="old('nama')" required/>
+                            <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                         </div>
                         <div class="max-w-xl">
                             <x-primary-button>Submit</x-primary-button>

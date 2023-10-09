@@ -42,6 +42,7 @@ class MapelServiceController extends Controller
 
         $mapel->nama = $request->nama;
         $mapel->kelas_id = $request->kelas_id;
+        $mapel->user_id = $request->user_id;
         $mapel->hari = $request->hari;
         $mapel->schedule_start_at = $request->waktu_mulai;
         $mapel->schedule_end_at = $request->waktu_selesai;

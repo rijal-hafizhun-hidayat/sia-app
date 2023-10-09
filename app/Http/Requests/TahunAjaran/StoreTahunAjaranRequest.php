@@ -31,7 +31,7 @@ class StoreTahunAjaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tahun_ajaran' => 'required|string'
+            'nama' => 'required|string'
         ];
     }
 }

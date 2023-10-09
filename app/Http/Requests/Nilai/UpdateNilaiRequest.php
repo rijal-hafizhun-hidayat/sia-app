@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\TahunAjaran;
+namespace App\Http\Requests\Nilai;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateTahunAjaranRequest extends FormRequest
+class UpdateNilaiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,8 +19,8 @@ class UpdateTahunAjaranRequest extends FormRequest
     {
         return [
             'required' => 'wajib diisi',
-            'string' => 'format salah'
-        ];       
+            'numeric' => 'format salah'
+        ];
     }
 
     /**
@@ -31,7 +31,11 @@ class UpdateTahunAjaranRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required|string'
+            'user_id' => 'required|numeric',
+            'mapel_id' => 'required|numeric',
+            'tahun_ajaran_id' => 'required|numeric',
+            'nilai_uts' => 'required|numeric',
+            'nilai_uas' => 'required|numeric'
         ];
     }
 }

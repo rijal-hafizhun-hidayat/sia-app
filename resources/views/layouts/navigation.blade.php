@@ -27,6 +27,9 @@
                     <x-nav-link :href="route('tahun_ajaran.index')" :active="request()->routeIs('tahun_ajaran.*')">
                         Tahun Ajaran
                     </x-nav-link>
+                    <x-nav-link :href="route('nilai.index')" :active="request()->routeIs('nilai.*')">
+                        Nilai
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -93,6 +96,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('tahun_ajaran.index')" :active="request()->routeIs('tahun_ajaran.*')">
                 Tahun Ajaran
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('nilai.index')" :active="request()->routeIs('nilai.*')">
+                Nilai
             </x-responsive-nav-link>
         </div>
 
