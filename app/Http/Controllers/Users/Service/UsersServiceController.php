@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\StoreUsersRequest;
 use App\Http\Requests\Users\UpdateUsersRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersServiceController extends Controller
 {
@@ -56,5 +57,11 @@ class UsersServiceController extends Controller
         User::destroy($id);
 
         return redirect()->route('users.index');
+    }
+
+    public function changePasswordUser($payload, $id){
+        return User::where('id', $id)->update([
+            'password' => Hash::make($payload['password'])
+        ]);
     }
 }

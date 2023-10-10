@@ -73,10 +73,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/add', [UsersController::class, 'add'])->name('users.add');
         Route::get('/{id}', [UsersController::class, 'edit'])->name('users.edit');
         Route::get('/detail/{id}', [UsersController::class, 'detail'])->name('users.detail');
+        Route::get('/password/{id}', [UsersController::class, 'editPass'])->name('users.change-password');
 
         //service users
         Route::post('/', [UsersServiceController::class, 'store'])->name('users.store');
         Route::put('/{id}', [UsersServiceController::class, 'update'])->name('users.update');
+        Route::put('/password/{id}', [UsersController::class, 'updatePass'])->name('users.update-pass');
         Route::delete('/{id}', [UsersServiceController::class, 'destroy'])->name('users.destroy');
     });
 
@@ -102,6 +104,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/{user_id}/add', [NilaiController::class, 'add'])->name('nilai.add');
         Route::get('/{id}', [NilaiController::class, 'score'])->name('nilai.score');
         Route::get('/{user_id}/{id}/edit', [NilaiController::class, 'edit'])->name('nilai.edit');
+
+        //service nilai
         Route::put('/{id}', [NilaiController::class, 'update'])->name('nilai.update');
         Route::post('/', [NilaiController::class, 'store'])->name('nilai.store');
         Route::delete('/{id}', [NilaiController::class, 'destroy'])->name('nilai.destroy');

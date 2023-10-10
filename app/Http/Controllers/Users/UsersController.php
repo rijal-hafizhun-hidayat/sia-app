@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
 use App\Http\Controllers\Users\Service\UsersServiceController;
+use App\Http\Requests\Users\UpdatePasswordUserRequest;
 
 class UsersController extends Controller
 {
-    private $kelas;
-    private $users;
-    private $role;
+    protected $kelas;
+    protected $users;
+    protected $role;
     public function __construct()
     {
         $this->kelas = new KelasServiceController;
@@ -43,5 +44,18 @@ class UsersController extends Controller
         return view('users/detail', [
             'user' => $this->users->getUsersById($id)
         ]);
+    }
+
+    public function editPass($id){
+        return view('users/edit-password', [
+            'id' => $id
+        ]);
+    }
+
+    public function updatePass(UpdatePasswordUserRequest $request, $id){
+        $payload = $request->validated();
+        $this->users->changePasswordUser($payload, $id);
+
+        return redirect()->route('users.index');
     }
 }

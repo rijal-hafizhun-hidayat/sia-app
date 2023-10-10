@@ -44,6 +44,7 @@
                                         </form>
                                         <x-show-button :href="route('users.edit', ['id' => $user->id])">Ubah</x-show-button>
                                         <x-detail-button :href="route('users.detail', ['id' => $user->id])">Detail</x-detail-button>
+                                        <x-change-password-button :href="route('users.change-password', ['id' => $user->id])">Ubah Password</x-change-password-button>
                                     </div>
                                 </td>
                             </tr>
