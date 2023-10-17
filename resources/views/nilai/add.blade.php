@@ -39,11 +39,13 @@
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="nilai_uts" :value="'Nilai UTS'" />
-                            <x-text-input id="nilai_uts" name="nilai_uts" type="text" class="mt-1 w-full" :value="old('nilai_uts')" onkeypress="return onlyNumberKey(event)"/>
+                            <x-number-input id="nilai_uts" name="nilai_uts" class="mt-1 w-full" :value="old('nilai_uts')" onkeypress="return onlyNumberKey(event)"/>
+                            <x-input-error class="mt-2" :messages="$errors->get('nilai_uts')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="nilai_uas" :value="'Nilai UAS'" />
-                            <x-text-input id="nilai_uas" name="nilai_uas" type="text" class="mt-1 w-full" :value="old('nilai_uas')" onkeypress="return onlyNumberKey(event)"/>
+                            <x-number-input id="nilai_uas" name="nilai_uas" class="mt-1 w-full" :value="old('nilai_uas')" onkeypress="return onlyNumberKey(event)"/>
+                            <x-input-error class="mt-2" :messages="$errors->get('nilai_uas')" />
                         </div>
                         <div class="max-w-xl">
                             <x-primary-button>Submit</x-primary-button>

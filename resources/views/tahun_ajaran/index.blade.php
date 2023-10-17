@@ -4,10 +4,13 @@
             <div>
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Tahun Ajaran</h2>
             </div>
+            @if (Auth::user()->role == 1)
             <div>
                 {{-- <x-create-button :href="{{ route('mapel.create') }}">Tambah Mata Pelajaran</x-create-button> --}}
                 <x-create-button :href="route('tahun_ajaran.add')">Tambah Tahun Ajaran</x-create-button>
             </div>
+            @endif
+            
         </div>
     </x-slot>
 

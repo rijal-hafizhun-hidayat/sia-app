@@ -4,9 +4,12 @@
             <div>
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">User</h2>
             </div>
+            @if (Auth::user()->role == 1)
             <div>
                 <x-create-button :href="route('users.add')">Tambah User</x-create-button>
             </div>
+            @endif
+            
         </div>
     </x-slot>
 
@@ -20,6 +23,7 @@
                                 <th class="pb-4 pt-6 px-6">Nama Pengguna</th>
                                 <th class="pb-4 pt-6 px-6">Username</th>
                                 <th class="pb-4 pt-6 px-6">Role</th>
+                                <th class="pb-4 pt-6 px-6">Kelas</th>
                                 <th class="pb-4 pt-6 px-6">Action</th>
                             </tr>
                         </thead>
@@ -29,11 +33,14 @@
                                 <td class="border-t items-center px-6 py-4">
                                     <p>{{ $user->nama }}</p>
                                 </td>
-                                <td class="border-t items-center px-6 py-4 uppercase">
+                                <td class="border-t items-center px-6 py-4">
                                     <p>{{ $user->username }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <p>{{ setValRole($user->role) }}</p>
+                                </td>
+                                <td class="border-t items-center px-6 py-4 uppercase">
+                                    <p>{{ $user->kelas->nama ?? '-' }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4 uppercase">
                                     <div class="flex justify-start space-x-4">

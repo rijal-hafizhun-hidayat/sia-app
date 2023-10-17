@@ -4,12 +4,20 @@ namespace App\Http\Controllers\Kelas;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
+use App\Http\Controllers\Users\Service\UsersServiceController;
 
 class KelasController extends Controller
 {
-    public function index(KelasServiceController $kelas){
+    protected $kelasService;
+    protected $userService;
+    public function __construct()
+    {
+        $this->kelasService = new KelasServiceController;
+        $this->userService = new UsersServiceController;        
+    }
+    public function index(){
         return view('kelas/index', [
-            'kelass' => $kelas->getKelas()
+            'kelass' => $this->kelasService->getKelas()
         ]);
     }
 
@@ -17,17 +25,26 @@ class KelasController extends Controller
         return view('kelas/create');
     }
 
-    public function edit(KelasServiceController $kelas, $id){
+    public function edit($id){
         return view('kelas/edit', [
-            'kelas' => $kelas->getKelasById($id)
+            'kelas' => $this->kelasService->getKelasById($id)
         ]);
     }
 
-    public function delete(KelasServiceController $kelas, $id){
-        $isMapel = $kelas->getKelasById($id);
+    public function delete($id){
+        $isMapel = $this->kelasService->getKelasById($id);
         return view('kelas/delete', [
-            'kelas' => $kelas->getKelasById($id),
+            'kelas' => $this->kelasService->getKelasById($id),
             'is_mapel' => $isMapel->mapel()->first()
+        ]);
+    }
+
+    public function detail($id){
+        $kelas = $this->kelasService->getKelasById($id);
+        return view('kelas/detail', [
+            'kelas' => $kelas,
+            'mapels' => $kelas->mapel,
+            'students' => $kelas->user
         ]);
     }
 }

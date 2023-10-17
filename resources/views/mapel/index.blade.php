@@ -4,10 +4,12 @@
             <div>
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Mata Pelajaran</h2>
             </div>
+            @if (Auth::user()->role == 1)
             <div>
                 {{-- <x-create-button :href="{{ route('mapel.create') }}">Tambah Mata Pelajaran</x-create-button> --}}
                 <x-create-button :href="route('mapel.add')">Tambah Mata Pelajaran</x-create-button>
             </div>
+            @endif
         </div>
     </x-slot>
 
@@ -24,7 +26,9 @@
                                 <th class="pb-4 pt-6 px-6">Guru</th>
                                 <th class="pb-4 pt-6 px-6">Waktu Mulai</th>
                                 <th class="pb-4 pt-6 px-6">Waktu Selesai</th>
+                                @if (Auth::user()->role == 1)
                                 <th class="pb-4 pt-6 px-6">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +52,7 @@
                                 <td class="border-t items-center px-6 py-4">
                                     <p>{{ timeFormat($mapel->schedule_end_at) }}</p>
                                 </td>
+                                @if (Auth::user()->role == 1)
                                 <td class="border-t items-center px-6 py-4">
                                     <div class="flex flex-row space-x-4">
                                         <form action="{{ route('mapel.destroy', ['id' => $mapel->id]) }}" method="POST">
@@ -57,7 +62,8 @@
                                         </form>
                                         <x-show-button :href="route('mapel.edit', ['id' => $mapel->id])">Ubah</x-show-button>
                                     </div>
-                                </td>
+                                </td> 
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>

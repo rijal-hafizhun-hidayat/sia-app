@@ -38,6 +38,7 @@ class StoreUsersRequest extends FormRequest
             'username' => 'required|string',
             'password' => 'required|string',
             'email' => 'email:rfc,dns',
+            'nis' => 'nullable|numeric',
             'kelas_id' => 'nullable|numeric'
         ];
     }

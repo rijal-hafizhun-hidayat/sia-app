@@ -12,6 +12,10 @@ class MapelServiceController extends Controller
         return Mapel::latest()->paginate(10);
     }
 
+    public function getMapelByUserId($id){
+        return Mapel::where('user_id', $id)->latest()->paginate(10);
+    }
+
     public function getMapelByKelasId($id){
         return Mapel::where('kelas_id', $id)->get();
     }

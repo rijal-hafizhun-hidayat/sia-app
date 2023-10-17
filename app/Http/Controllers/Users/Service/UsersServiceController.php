@@ -18,6 +18,10 @@ class UsersServiceController extends Controller
         return User::find($id);
     }
 
+    public function getUsersByKelasId($id){
+        return User::where('kelas_id', $id)->get();
+    }
+
     public function getSiswa(){
         return User::where('role', User::ROLE_SISWA)->paginate(10);
     }
@@ -33,6 +37,7 @@ class UsersServiceController extends Controller
             'role' => $request->role,
             'username' => $request->username,
             'password' => $request->password,
+            'nis' => $request->nis,
             'kelas_id' => $request->kelas_id
         ]);
 
@@ -46,6 +51,7 @@ class UsersServiceController extends Controller
         $user->email = $request->email;
         $user->role = $request->role;
         $user->username = $request->username;
+        $user->nis = $request->nis;
         $user->kelas_id = $request->kelas_id;
 
         $user->save();

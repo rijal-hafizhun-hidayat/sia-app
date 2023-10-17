@@ -16,11 +16,14 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained(
                 table: 'users', indexName: 'nilai_user_id'
             );
+            $table->foreignId('kelas_id')->constrained(
+                table: 'kelas', indexName: 'nilai_kelas_id'
+            );
             $table->foreignId('mapel_id')->constrained(
                 table: 'mapel', indexName: 'nilai_mapel_id'
             );
             $table->foreignId('tahun_ajaran_id')->constrained(
-                table: 'mapel', indexName: 'nilai_tahun_ajaran_id'
+                table: 'tahun_ajaran', indexName: 'nilai_tahun_ajaran_id'
             );
             $table->integer('nilai_uts')->nullable();
             $table->integer('nilai_uas')->nullable();

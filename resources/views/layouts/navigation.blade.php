@@ -15,21 +15,36 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         Dashboard
                     </x-nav-link>
+                    @if (Auth::user()->role == 1)
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                         User
                     </x-nav-link>
+                    @endif
+                    
+                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                     <x-nav-link :href="route('kelas.index')" :active="request()->routeIs('kelas.*')">
                         Kelas
                     </x-nav-link>
+                    @endif
+                    
+                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                     <x-nav-link :href="route('mapel.index')" :active="request()->routeIs('mapel.*')">
                         Mata Pelajaran
                     </x-nav-link>
+                    @endif
+                    
+
+                    @if (Auth::user()->role == 1)
                     <x-nav-link :href="route('tahun_ajaran.index')" :active="request()->routeIs('tahun_ajaran.*')">
                         Tahun Ajaran
                     </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                     <x-nav-link :href="route('nilai.index')" :active="request()->routeIs('nilai.*')">
                         Nilai
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -85,21 +100,35 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 Dashboard
             </x-responsive-nav-link>
+            @if (Auth::user()->role == 1)
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                 User
             </x-responsive-nav-link>
+            @endif
+
+            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
             <x-responsive-nav-link :href="route('kelas.index')" :active="request()->routeIs('kelas.*')">
                 Kelas
             </x-responsive-nav-link>
+            @endif
+
+            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
             <x-responsive-nav-link :href="route('mapel.index')" :active="request()->routeIs('mapel.*')">
                 Mata Pelajaran
             </x-responsive-nav-link>
+            @endif
+            
+            @if (Auth::user()->role == 1)
             <x-responsive-nav-link :href="route('tahun_ajaran.index')" :active="request()->routeIs('tahun_ajaran.*')">
                 Tahun Ajaran
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> 
+            @endif
+
+            @if (Auth::user()->role == 1 || Auth::user()->role == 2)
             <x-responsive-nav-link :href="route('nilai.index')" :active="request()->routeIs('nilai.*')">
                 Nilai
             </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

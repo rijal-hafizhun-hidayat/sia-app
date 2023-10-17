@@ -4,9 +4,11 @@
             <div>
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Kelas</h2>
             </div>
+            @if (Auth::user()->role == 1)
             <div>
                 <x-create-button :href="route('kelas.add')">Tambah Kelas</x-create-button>
             </div>
+            @endif
         </div>
     </x-slot>
 
@@ -39,8 +41,11 @@
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <div class="flex flex-row space-x-4">
+                                        @if (Auth::user()->role == 1)
                                         <x-delete-button :href="route('kelas.delete', ['id' => $kelas->id])">Hapus</x-delete-button>
                                         <x-show-button :href="route('kelas.edit', ['id' => $kelas->id])">Ubah</x-show-button>
+                                        @endif
+                                        <x-create-button :href="route('kelas.detail', ['id' => $kelas->id])">Detail</x-create-button>
                                     </div>
                                 </td>
                             </tr>

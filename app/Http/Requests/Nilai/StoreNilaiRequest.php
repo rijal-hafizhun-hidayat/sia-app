@@ -19,7 +19,9 @@ class StoreNilaiRequest extends FormRequest
     {
         return [
             'required' => 'wajib diisi',
-            'numeric' => 'format salah'
+            'numeric' => 'format salah',
+            'min_digits' => 'nilai minimal 1',
+            'max_digits' => 'nilai maksimal 100'
         ];
     }
 
@@ -34,8 +36,8 @@ class StoreNilaiRequest extends FormRequest
             'user_id' => 'required|numeric',
             'mapel_id' => 'required|numeric',
             'tahun_ajaran_id' => 'required|numeric',
-            'nilai_uts' => 'required|numeric',
-            'nilai_uas' => 'required|numeric'
+            'nilai_uts' => 'required|numeric|min_digits:1|max_digits:100',
+            'nilai_uas' => 'required|numeric|min_digits:1|max_digits:100'
         ];
     }
 }

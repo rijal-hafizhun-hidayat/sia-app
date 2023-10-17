@@ -10,6 +10,7 @@ use App\Http\Controllers\TahunAjaran\Services\TahunAjaranServiceController;
 use App\Http\Controllers\Users\Service\UsersServiceController;
 use App\Http\Requests\Nilai\StoreNilaiRequest;
 use App\Http\Requests\Nilai\UpdateNilaiRequest;
+use Illuminate\Support\Facades\Auth;
 
 class NilaiController extends Controller
 {
@@ -78,15 +79,6 @@ class NilaiController extends Controller
 
         return redirect()->route('nilai.score', ['id' => $payload['user_id']]);
     }
-
-    // public function add(){
-    //     return dd('true');
-    // }
-
-    // public function ascadwq(){
-    //     dd('test');
-    //     // return view('nilai.create');
-    // }
 
     public function score($id){
         $scores = $this->nilaiService->getNilaiById($id);

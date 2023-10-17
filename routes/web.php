@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Kelas\KelasController;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
 use App\Http\Controllers\Mapel\MapelController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\TahunAjaran\TahunAjaranController;
 use App\Http\Controllers\Users\Service\UsersServiceController;
 use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +29,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,6 +48,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/add', [KelasController::class, 'add'])->name('kelas.add');
         Route::get('/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
         Route::get('/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
+        Route::get('/detail/{id}', [KelasController::class, 'detail'])->name('kelas.detail');
 
         //service kelas
         Route::post('/', [KelasServiceController::class, 'store'])->name('kelas.store');
