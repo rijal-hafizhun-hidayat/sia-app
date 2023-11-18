@@ -56,6 +56,6 @@ class UsersController extends Controller
         $payload = $request->validated();
         $this->users->changePasswordUser($payload, $id);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->withSuccess('Password berhasil dihapus');
     }
 }

@@ -40,11 +40,9 @@
                     </x-nav-link>
                     @endif
 
-                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                     <x-nav-link :href="route('nilai.index')" :active="request()->routeIs('nilai.*')">
                         Nilai
                     </x-nav-link>
-                    @endif
                 </div>
             </div>
 

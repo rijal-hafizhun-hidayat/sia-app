@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\StoreUsersRequest;
 use App\Http\Requests\Users\UpdateUsersRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UsersServiceController extends Controller
@@ -23,7 +24,21 @@ class UsersServiceController extends Controller
     }
 
     public function getSiswa(){
-        return User::where('role', User::ROLE_SISWA)->paginate(10);
+        $user = User::where('role', User::ROLE_SISWA);
+
+        if(Auth::user()->role == 3){
+            $user->where('nama', Auth::user()->nama);
+        }
+        else{
+            if(request()->filled('search_user')){
+                $user->where('nama', 'like', '%'.request()->search_user.'%');
+            }
+            if(request()->filled('search_class')){
+                $user->where('kelas_id', request()->search_class);
+            }
+        }
+        
+        return $user->paginate(10);
     }
 
     public function getUsersByRole($role){
@@ -41,7 +56,7 @@ class UsersServiceController extends Controller
             'kelas_id' => $request->kelas_id
         ]);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->withSuccess('Data berhasil disimpan');
     }
 
     public function update(UpdateUsersRequest $request, $id){
@@ -51,18 +66,18 @@ class UsersServiceController extends Controller
         $user->email = $request->email;
         $user->role = $request->role;
         $user->username = $request->username;
-        $user->nis = $request->nis;
+        $user->nis = $request->nis ?? null;
         $user->kelas_id = $request->kelas_id;
 
         $user->save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->withSuccess('Data berhasil diubah');
     }
 
     public function destroy($id){
         User::destroy($id);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->withSuccess('Data berhasil hapus');
     }
 
     public function changePasswordUser($payload, $id){

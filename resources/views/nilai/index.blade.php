@@ -7,6 +7,27 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if (Auth::user()->role != 3)
+            <form action="{{ route('nilai.index') }}" method="get">
+                @csrf
+                <div class="flex flex-row space-x-4 mb-4">
+                    <div>
+                        <x-text-input id="search_user" name="search_user" class="w-full" :placeholder="'Cari Siswa'"/>
+                    </div>
+                    <div>
+                        <x-select-input class="w-full" name="search_class" id="search_class">
+                            <option disabled selected>-- Pilih Kelas --</option>
+                            @foreach ($classs as $class)
+                            <option value="{{ $class->id }}">{{ $class->nama }}</option>
+                            @endforeach
+                        </x-select-input>
+                    </div>
+                    <div class="w-full">
+                        <x-primary-button>Submit</x-primary-button>
+                    </div>
+                </div>  
+            @endif
+            </form>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <table class="w-full whitespace-nowrap">

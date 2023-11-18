@@ -10,6 +10,7 @@ use App\Http\Controllers\TahunAjaran\Services\TahunAjaranServiceController;
 use App\Http\Controllers\Users\Service\UsersServiceController;
 use App\Http\Requests\Nilai\StoreNilaiRequest;
 use App\Http\Requests\Nilai\UpdateNilaiRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class NilaiController extends Controller
@@ -30,8 +31,11 @@ class NilaiController extends Controller
     
     public function index(){
         $student = $this->userService->getSiswa();
+        $class = $this->kelasService->getAll();
+
         return view('nilai/index', [
-            'students' => $student
+            'students' => $student,
+            'classs' => $class
         ]);
     }
 
@@ -51,13 +55,13 @@ class NilaiController extends Controller
         $payload =  $request->validated();
         $this->nilaiService->storeData($payload);
 
-        return redirect()->route('nilai.score', ['id' => $payload['user_id']]);
+        return redirect()->route('nilai.score', ['id' => $payload['user_id']])->withSuccess('Data berhasil disimpan');
     }
 
     public function destroy($id){
         $this->nilaiService->deleteById($id);
 
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
 
     public function edit($user_id, $id){
@@ -77,7 +81,7 @@ class NilaiController extends Controller
         $payload = $request->validated();
         $this->nilaiService->updateData($payload, $id);
 
-        return redirect()->route('nilai.score', ['id' => $payload['user_id']]);
+        return redirect()->route('nilai.score', ['id' => $payload['user_id']])->withSuccess('Data berhasil diubah');
     }
 
     public function score($id){

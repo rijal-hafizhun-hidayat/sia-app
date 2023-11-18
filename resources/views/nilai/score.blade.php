@@ -7,9 +7,11 @@
                 </h2>
             </div>
             @if (request()->routeIs('nilai.score'))
+            @if (Auth::user()->role != 3)
             <div>
                 <x-create-button :href="route('nilai.add', ['user_id' => $user->id])">Tambah Nilai</x-create-button>
             </div>
+            @endif
             @endif
         </div>
         

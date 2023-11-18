@@ -32,6 +32,11 @@
                             </x-select-input>
                             <x-input-error class="mt-2" :messages="$errors->get('role')" />
                         </div>
+                        <div class="max-w-xl hidden" id="nis">
+                            <x-input-label for="nis-input" :value="'Nis'" />
+                            <x-text-input id="nis-input" name="nis" type="number" class="w-full" :value="$user->nis"/>
+                            <x-input-error class="mt-2" :messages="$errors->get('nis')" />
+                        </div>
                         <div class="max-w-xl hidden" id="kelas">
                             <x-input-label for="kelas_id" :value="'Kelas'" />
                             <x-select-input class="w-full" name="kelas_id" id="kelas_id">
@@ -66,15 +71,32 @@
                 return setUsername[role]
             }
 
+            const setUsernamePasswordSiswa = () => {
+                $('#username').val($('#nis-input').val() + setRoleUsername($('#role').val()));
+                $('#password').val(Math.floor(100000 + Math.random() * 900000));
+            }
+            
+            const setUsernamePasswordGuruAdmin = () => {
+                $('#username').val(Math.floor(Math.random() * 9000 + 1000) + setRoleUsername($("#role").val()));
+                $('#password').val(Math.floor(100000 + Math.random() * 900000));
+            }
+
             $('#role').change(function(){ 
                 $('#username').val(Math.floor(Math.random() * 9000 + 1000) + setRoleUsername($("#role").val()));
                 $('#password').val(Math.floor(100000 + Math.random() * 900000));
 
                 if($('#role').val() == 3){
-                    $('#kelas').removeClass('hidden');
+                    $('#nis').removeClass('hidden');
+
+                    $('#nis').change(function() { 
+                        setUsernamePasswordSiswa()
+                    });
                 }
                 else{
                     $('#kelas').addClass('hidden');
+                    $('#nis').addClass('hidden');
+
+                    setUsernamePasswordGuruAdmin()
                 }
             });
         })

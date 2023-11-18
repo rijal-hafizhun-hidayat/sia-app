@@ -33,6 +33,7 @@ class StoreNilaiRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'kelas_id' => 'required|numeric',
             'user_id' => 'required|numeric',
             'mapel_id' => 'required|numeric',
             'tahun_ajaran_id' => 'required|numeric',

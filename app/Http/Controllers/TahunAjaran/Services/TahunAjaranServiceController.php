@@ -22,7 +22,7 @@ class TahunAjaranServiceController extends Controller
             'nama' => $request->nama
         ]);
 
-        return redirect()->route('tahun_ajaran.index');
+        return redirect()->route('tahun_ajaran.index')->withSuccess('Data berhasil disimpan');
     }
 
     public function update(UpdateTahunAjaranRequest $request, $id){
@@ -32,12 +32,12 @@ class TahunAjaranServiceController extends Controller
 
         $tahunAjaran->save();
 
-        return redirect()->route('tahun_ajaran.index');
+        return redirect()->route('tahun_ajaran.index')->withSuccess('Data berhasil diubah');
     }
 
     public function destroy($id){
         TahunAjaran::destroy($id);
 
-        return redirect()->route('tahun_ajaran.index');
+        return redirect()->route('tahun_ajaran.index')->withSuccess('Data berhasil dihapus');
     }
 }

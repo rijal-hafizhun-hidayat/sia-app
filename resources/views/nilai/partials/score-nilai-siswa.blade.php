@@ -4,7 +4,9 @@
             <th class="pb-4 pt-6 px-6">Nama Mata Pelajaran</th>
             <th class="pb-4 pt-6 px-6">Nilai UTS</th>
             <th class="pb-4 pt-6 px-6">Nilai UAS</th>
+            @if (Auth::user()->role != 3)
             <th class="pb-4 pt-6 px-6">Action</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -20,6 +22,7 @@
                 {{ $score->nilai_uas }}
             </td>
             <td class="border-t items-center px-6 py-4">
+                @if (Auth::user()->role != 3)
                 <div class="flex flex-row space-x-4">
                     <form action="{{ route('nilai.destroy', ['id' => $score->id]) }}" method="post">
                         @csrf
@@ -28,6 +31,7 @@
                     </form>
                     <x-show-button :href="route('nilai.edit', ['id' => $score->id, 'user_id' => $user->id])">Ubah</x-show-button>
                 </div>
+                @endif
             </td>
         </tr>
         @endforeach

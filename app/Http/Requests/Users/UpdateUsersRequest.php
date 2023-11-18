@@ -33,6 +33,7 @@ class UpdateUsersRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'nis' => 'nullable|numeric',
             'nama' => 'required|string',
             'role' => 'required|numeric',
             'username' => 'required|string',

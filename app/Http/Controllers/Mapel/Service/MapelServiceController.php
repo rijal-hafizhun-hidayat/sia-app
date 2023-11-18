@@ -38,7 +38,7 @@ class MapelServiceController extends Controller
             'schedule_end_at' => $request->waktu_selesai,
         ]);
 
-        return redirect()->route('mapel.index');
+        return redirect()->route('mapel.index')->withSuccess('Data berhasil disimpan');
     }
 
     public function update(StoreMapelRequest $request, $id){
@@ -53,12 +53,12 @@ class MapelServiceController extends Controller
 
         $mapel->save();
 
-        return redirect()->route('mapel.index');
+        return redirect()->route('mapel.index')->withSuccess('Data berhasil diubah');
     }
 
     public function destroy($id){
         Mapel::destroy($id);
 
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
 }

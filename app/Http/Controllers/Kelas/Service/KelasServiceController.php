@@ -25,8 +25,7 @@ class KelasServiceController extends Controller
         Kelas::create([
             'nama' => $request->nama
         ]);
-
-        return redirect()->route('kelas.index');
+        return redirect()->route('kelas.index')->withSuccess('Data berhasil disimpan');
     }
 
     public function update(StoreKelasRequest $request, $id){
@@ -36,13 +35,13 @@ class KelasServiceController extends Controller
         
         $kelas->save();
 
-        return redirect()->route('kelas.index');
+        return redirect()->route('kelas.index')->withSuccess('Data berhasil diubah');
     }
 
     public function destroy($id){
         Kelas::destroy($id);
         
 
-        return redirect()->route('kelas.index');
+        return redirect()->route('kelas.index')->withSuccess('Data berhasil dihapus');
     }
 }

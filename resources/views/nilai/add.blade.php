@@ -16,6 +16,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form action="{{ route('nilai.store') }}" method="POST" class="space-y-4">
                         @csrf
+                        <input type="hidden" name="kelas_id" id="kelas_id" value="{{ $user->kelas->id }}">
                         <input type="hidden" name="user_id" id="user_id" value="{{ $user->id }}">
                         <div class="max-w-xl">
                             <x-input-label for="mapel_id" :value="'Mata Pelajaran'" />

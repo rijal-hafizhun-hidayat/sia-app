@@ -13,6 +13,7 @@ class NilaiServiceController extends Controller
 
     public function storeData($payload){
         return Nilai::create([
+            'kelas_id' => $payload['kelas_id'],
             'user_id' => $payload['user_id'],
             'mapel_id' => $payload['mapel_id'],
             'tahun_ajaran_id' => $payload['tahun_ajaran_id'],
