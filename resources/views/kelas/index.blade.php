@@ -15,7 +15,7 @@
     <div class="py-12 space-y-4">
         @if (session('message'))
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-red-500 dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
+            <div class="bg-red-500 dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="p-6 text-white dark:text-gray-100">
                     {{ session('message') }}
                 </div>
@@ -24,7 +24,7 @@
         @endif
         
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="text-gray-900 dark:text-gray-100">
                     <table class="w-full whitespace-nowrap">
                         <thead>

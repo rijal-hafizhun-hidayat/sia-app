@@ -17,7 +17,7 @@
             </div>
 
             {{-- tabel jadwal mapel --}}
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <p>Mata Pelajaran</p>
                     <table class="w-full whitespace-nowrap">

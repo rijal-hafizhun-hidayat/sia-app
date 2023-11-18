@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public function kelas():BelongsTo
     {
-        return $this->belongsTo(kelas::class);
+        return $this->belongsTo(Kelas::class);
     }
 
     public function mapel(): HasMany
