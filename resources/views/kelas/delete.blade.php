@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Hapus Kelas
         </h2>
     </x-slot>
@@ -17,8 +17,8 @@
             </x-success-delete-notif>
             @endif
             
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
+                <div class="p-6 text-gray-900">
                     <div class="flex flex-row">
                         <div class="py-2"><p>Nama Kelas:</p></div>
                         <div class="rounded bg-slate-300 ml-2 basis-1/3 py-2"><p class="uppercase ml-3">{{ $kelas->nama }}</div>
@@ -36,8 +36,8 @@
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="p-6 text-gray-900">
                     <table class="w-full whitespace-nowrap">
                         <thead>
                             <tr class="text-left font-bold">

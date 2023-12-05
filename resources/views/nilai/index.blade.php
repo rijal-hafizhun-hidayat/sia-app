@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Nilai</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Nilai</h2>
         </div>
     </x-slot>
 
@@ -28,8 +28,8 @@
                 </div>  
             @endif
             </form>
-            <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="p-6 text-gray-900">
                     <table class="w-full whitespace-nowrap">
                         <thead>
                             <tr class="text-left font-bold">

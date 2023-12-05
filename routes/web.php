@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Berita\BeritaController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kelas\KelasController;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
 use App\Http\Controllers\Mapel\MapelController;
@@ -25,9 +27,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -114,6 +118,15 @@ Route::middleware('auth')->group(function () {
         Route::put('/{id}', [NilaiController::class, 'update'])->name('nilai.update');
         Route::post('/', [NilaiController::class, 'store'])->name('nilai.store');
         Route::delete('/{id}', [NilaiController::class, 'destroy'])->name('nilai.destroy');
+    });
+
+    Route::prefix('/berita')->group(function(){
+        Route::get('/', [BeritaController::class, 'index'])->name('berita.index');
+        Route::get('/create', [BeritaController::class, 'create'])->name('berita.create');
+        Route::post('/', [BeritaController::class, 'store'])->name('berita.store');
+        Route::delete('/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+        Route::get('/{id}', [BeritaController::class, 'tampil'])->name('berita.tampil');
+        Route::put('/{id}', [BeritaController::class, 'update'])->name('berita.update');
     });
 });
 

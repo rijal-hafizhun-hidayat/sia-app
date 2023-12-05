@@ -16,24 +16,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            @if(session('success'))
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-green-500 p-5 mt-5 rounded">
-                    <h1>{{session('success')}}</h1>
-                </div>
-            </div>
-            @endif
+            @include('layouts.navigation-home')
 
             <!-- Page Content -->
             <main>
