@@ -53,7 +53,8 @@ class UsersServiceController extends Controller
             'username' => $request->username,
             'password' => $request->password,
             'nis' => $request->nis,
-            'kelas_id' => $request->kelas_id
+            'kelas_id' => $request->kelas_id,
+            'gender' => $request->gender
         ]);
 
         return redirect()->route('users.index')->withSuccess('Data berhasil disimpan');
@@ -68,6 +69,7 @@ class UsersServiceController extends Controller
         $user->username = $request->username;
         $user->nis = $request->nis ?? null;
         $user->kelas_id = $request->kelas_id;
+        $user->gender = $request->gender;
 
         $user->save();
 
@@ -84,5 +86,13 @@ class UsersServiceController extends Controller
         return User::where('id', $id)->update([
             'password' => Hash::make($payload['password'])
         ]);
+    }
+
+    public function getCountStudent($gender){
+        return User::where('role', 3)->where('gender', $gender)->count();
+    }
+
+    public function getCountTeacher(){
+        return User::where('role', 2)->count();
     }
 }

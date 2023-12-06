@@ -64,4 +64,10 @@ class BeritaController extends Controller
 
         return redirect()->route('berita.index')->withSuccess('Data berhasil diubah');
     }
+
+    public function viewNews($id){
+        return view('berita.lihat', [
+            'news' => $this->beritaService->findById($id)
+        ]);
+    }
 }

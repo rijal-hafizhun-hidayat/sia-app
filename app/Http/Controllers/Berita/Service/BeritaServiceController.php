@@ -11,6 +11,10 @@ class BeritaServiceController extends Controller
         return Berita::all();
     }
 
+    public function getThreeLatest(){
+        return Berita::orderBy('created_at', 'desc')->take(3)->get();
+    }
+
     public function storeData($payload, $filePath){
         return Berita::create([
             'judul' => $payload['judul'],
@@ -28,7 +32,6 @@ class BeritaServiceController extends Controller
     }
 
     public function updateDataById(Berita $news, $payload, $filePath){
-        //dd($news, $payload, $filePath);
         return $news->update([
             'judul' => $payload['judul'],
             'isi_berita' => $payload['isi_berita'],

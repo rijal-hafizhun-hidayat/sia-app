@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+        @vite(['resources/js/app.js'])
         <style>
             @media (min-width: 576px) {
                 .divider{
@@ -62,9 +62,10 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav ms-auto">
-                            <a class="nav-link divider-nav" aria-current="page" href="#">Home</a>
-                            <a class="nav-link divider-nav" href="#">Kontak</a>
-                            <a class="nav-link divider-nav" href="#">Profile</a>
+                            <a class="nav-link divider-nav" aria-current="page" href="#nav">Home</a>
+                            <a class="nav-link divider-nav" href="#footer">Kontak</a>
+                            <a class="nav-link divider-nav" href="#visi_misi">Profile</a>
+                            <a class="nav-link divider-nav" href="#berita-terbaru">Berita</a>
                             <a class="nav-link" href="{{ route('login') }}" aria-disabled="true">Login</a>
                         </div>
                     </div>
@@ -87,7 +88,7 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <p class="fw-bold">Siswa Laki-laki</p>
-                                    <p>Menciptakan lulusan berkarakter, cerdas dan berprestasi ...</p>
+                                    <p class="fw-bold fs-2">{{ $he_student }} Siswa</p>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +99,7 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <p class="fw-bold">Siswa Perempuan</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur ...</p>
+                                    <p class="fw-bold fs-2">{{ $she_student }} Siswa</p>
                                 </div>
                             </div>
                         </div>
@@ -109,10 +110,46 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <p class="fw-bold">Tenaga Pengajar</p>
-                                    <p>Sekolah menengah atas negeri 1 kerinci merupakan sekolah ...</p>
+                                    <p class="fw-bold fs-2">{{ $teacher }} Guru</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="visi_misi">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-sm-6">
+                        <img class="img-fluid rounded" src="{{ Storage::url('public/home/Sungai.jpg') }}" alt="">
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="fs-2 fw-bold">Visi-misi</p>
+                        <ol>
+                            <li>Membudayakan sikap disiplin, toleransi, saling menghargai, percaya diri, jujur dan mandiri dalam pergaulan serta solidaritas terhadap keanekaragaman bangsa Indonesia pada kegiatan intrakurikuler dan ekstrakurikule</li>
+                            <li>Mengembangkan sikap kreatif,komunikatif,kolaborasi dan integritas serta semangat kebangsaan pada kegiatn intrakurikuler dan proyek profil pancasila</li>
+                            <li>Mempersiapkan peserta didik agar mampu menempatkan diri dalam hidup bermasyarakat dengan bekal ilmu yang diperolehnya</li>
+                            <li>Peningkatan kemampuan IT peserta didik melalui pembelajaran berbasis IT dan mengembangkan Life skill peserta didik melalui kegiatan intarkurikuler dan ekstrakuikuler.</li>
+                            <li>Membudayakan literasi melalui intrakurikuler dan projek profil pelajar Pancasila</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-sm-6">
+                        <p class="fs-2 fw-bold">Tujuan</p>
+                        <ol>
+                            <li>Terciptanya sikap disiplin, toleransi, saling menghargai, percaya diri, jujur dan mandiri dalam pergaulan</li>
+                            <li>Terciptanya peserta didik yang kreatif dan berintegritas serta memiliki semangat kebangsaan</li>
+                            <li>Menerapkan pembelajaran aktif yang berbasis IT dan mengembangkan Life skill peserta didik melalui kegiatan intarkurikuler dan ekstrakuikuler.</li>
+                            <li>Mengembangkan literasi melalui intrakurikuler dan projek profil pelajar Pancasila</li>
+                            <li>Mengembangkan budaya sekolah yang kondusif untuk mencapai tujuan pendidikan menengah</li>
+                        </ol>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="img-fluid rounded" src="{{ Storage::url('public/home/group.jpeg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -122,36 +159,18 @@
             <div class="container">
                 <p class="text-center fs-3 fw-bold my-5">Berita Terkini</p>
                 <div class="row d-flex justify-content-center">
+                    @foreach ($newses as $news)
                     <div class="col-sm-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img src="{{ Storage::url($news->cover) }}" class="card-img-top img-fluid" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Lihat Berita</a>
+                                <h5 class="card-title">{{ $news->judul }}</h5>
+                                {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
+                                <a href="{{ route('home.view-news', ['id' => $news->id]) }}" class="btn btn-primary">Lihat Berita</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Lihat Berita</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Lihat Berita</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -160,12 +179,12 @@
             <div class="container">
                 <footer class="py-5">
                   <div class="row">
-                    <div class="col-6 col-md-2 mb-3">
+                    <div class="col-6 col-md-6 mb-3">
                       <h5 class="fs-2 fw-bold">Kontak</h5>
                       <ul class="nav flex-column mt-3">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Email</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">08123456789</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Alamat</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> Smankerinci@gmail.com</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 08123456789</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> Koto Baru Hiang, Kec. Sitinjau Laut, Kabupaten Kerinci, Jambi 37171</a></li>
                       </ul>
                     </div>
               

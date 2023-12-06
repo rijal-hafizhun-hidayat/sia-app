@@ -38,7 +38,8 @@ class UpdateUsersRequest extends FormRequest
             'role' => 'required|numeric',
             'username' => 'required|string',
             'email' => 'email:rfc,dns',
-            'kelas_id' => 'nullable|numeric'
+            'kelas_id' => 'nullable|numeric',
+            'gender' => 'required|string'
         ];
     }
 }

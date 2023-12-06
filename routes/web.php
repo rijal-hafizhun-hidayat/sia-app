@@ -32,6 +32,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/news/{id}', [BeritaController::class, 'viewNews'])->name('home.view-news');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

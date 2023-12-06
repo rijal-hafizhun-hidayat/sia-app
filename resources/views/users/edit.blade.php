@@ -48,6 +48,15 @@
                             <x-input-error class="mt-2" :messages="$errors->get('kelas_id')" />
                         </div>
                         <div class="max-w-xl">
+                            <x-input-label for="gender" :value="'gender'" />
+                            <x-select-input class="gender" name="gender" id="gender">
+                                <option disabled selected>-- Pilih --</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </x-select-input>
+                            <x-input-error class="mt-2" :messages="$errors->get('gender')" />
+                        </div>
+                        <div class="max-w-xl">
                             <x-input-label for="username" :value="'Username'"/>
                             <x-text-input class="w-full" id="username" name="username" :value="$user->username"/>
                             <x-input-error class="mt-2" :messages="$errors->get('username')" />
