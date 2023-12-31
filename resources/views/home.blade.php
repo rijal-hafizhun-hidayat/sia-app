@@ -32,6 +32,19 @@
                 .divider-nav{
                     margin-right: 20px;
                 }
+
+                .centered {
+                    position: absolute;
+                    top: 40%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                img {
+                    display: block;
+                    max-width: 80px;
+                    height: auto;
+                }
             }
 
             @media (max-width: 992px) {
@@ -46,6 +59,19 @@
                     background-size: cover;
                     height: 20rem;
                 }
+
+                .centered {
+                    position: absolute;
+                    top: 40%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                img {
+                    display: block;
+                    max-width: 80px;
+                    height: auto;
+                }
             }
         </style>
 
@@ -56,7 +82,10 @@
         <div id="nav">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Sman 1 kerinci</a>
+                    <a class="navbar-brand" href="#">
+                        <img width="30" height="30" src="{{ Storage::url('public/home/logo.jpeg') }}" alt="">
+                    </a>
+                    
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -73,7 +102,7 @@
             </nav>
 
             <div class="bg-image">
-                <p class="title text-center fw-bold fs-3 text-light">Selamat Datang <br> SMAN 1 KERINCI</p>
+                <p class="title text-center fw-bold fs-3 text-light centered">Selamat Datang <br> SMAN 1 KERINCI</p>
             </div>
         </div>
 
