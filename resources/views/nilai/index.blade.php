@@ -45,7 +45,7 @@
                                     <p>{{ $student->nama }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4 uppercase">
-                                    <p>{{ $student->kelas->nama }}</p>
+                                    <p>{{ $student->kelas->nama ?? '' }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4 uppercase">
                                     <div class="flex justify-start space-x-4">
