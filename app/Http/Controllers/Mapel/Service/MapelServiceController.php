@@ -9,11 +9,11 @@ use App\Models\Mapel;
 class MapelServiceController extends Controller
 {
     public function getMapel(){
-        return Mapel::latest()->paginate(10);
+        return Mapel::latest()->get();
     }
 
     public function getMapelByUserId($id){
-        return Mapel::where('user_id', $id)->latest()->paginate(10);
+        return Mapel::where('user_id', $id)->latest()->get();
     }
 
     public function getMapelByKelasId($id){

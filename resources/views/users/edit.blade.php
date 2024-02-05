@@ -51,8 +51,8 @@
                             <x-input-label for="gender" :value="'gender'" />
                             <x-select-input class="gender" name="gender" id="gender">
                                 <option disabled selected>-- Pilih --</option>
-                                <option value="Laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
+                                <option @selected($user->gender == 'Laku-laki') value="Laki-laki">Laki-laki</option>
+                                <option @selected($user->gender == 'Perempuan') value="Perempuan">Perempuan</option>
                             </x-select-input>
                             <x-input-error class="mt-2" :messages="$errors->get('gender')" />
                         </div>

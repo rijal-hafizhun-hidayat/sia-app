@@ -32,6 +32,15 @@
                 .divider-nav{
                     margin-right: 20px;
                 }
+
+                .hover-nav{
+                    border-radius: 10px;
+                }
+                .hover-nav:hover{
+                    background-color: black;
+                    transition: 0.3s ease;
+                    color: white;
+                }
             }
 
             @media (max-width: 992px) {
@@ -62,17 +71,17 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav ms-auto">
-                            <a class="nav-link divider-nav" aria-current="page" href="#">Home</a>
-                            <a class="nav-link divider-nav" href="#">Kontak</a>
-                            <a class="nav-link divider-nav" href="#">Profile</a>
-                            <a class="nav-link" href="{{ route('login') }}" aria-disabled="true">Login</a>
+                            <a class="nav-link divider-nav hover-nav" aria-current="page" href="{{ route('home.index') }}">Home</a>
+                            <a class="nav-link divider-nav hover-nav" href="#">Kontak</a>
+                            <a class="nav-link divider-nav hover-nav" href="#">Profile</a>
+                            <a class="nav-link hover-nav" href="{{ route('login') }}" aria-disabled="true">Login</a>
                         </div>
                     </div>
                 </div>
             </nav>
 
             <div class="bg-image">
-                <p class="title text-center fw-bold fs-3 text-light">{{ $news->judul }}</p>
+                <p class="title text-center fw-bold fs-3">{{ $news->judul }}</p>
             </div>
         </div>
 
@@ -91,9 +100,9 @@
                     <div class="col-6 col-md-2 mb-3">
                       <h5 class="fs-2 fw-bold">Kontak</h5>
                       <ul class="nav flex-column mt-3">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> Email</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> Smankerinci@gmail.com</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 08123456789</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> Alamat</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> Koto Baru Hiang, Kec. Sitinjau Laut, Kabupaten Kerinci, Jambi 37171</a></li>
                       </ul>
                     </div>
               

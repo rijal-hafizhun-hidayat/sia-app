@@ -44,7 +44,7 @@
                                     <p>{{ $mapel->hari }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
-                                    <p>{{ $mapel->user->nama }}</p>
+                                    <p>{{ $mapel->user ? $mapel->user->nama : '-' }}</p>
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <p>{{ timeFormat($mapel->schedule_start_at) }}</p>

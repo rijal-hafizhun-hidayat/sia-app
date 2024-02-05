@@ -45,6 +45,15 @@
                     max-width: 80px;
                     height: auto;
                 }
+
+                .hover-nav{
+                    border-radius: 10px;
+                }
+                .hover-nav:hover{
+                    background-color: black;
+                    transition: 0.3s ease;
+                    color: white;
+                }
             }
 
             @media (max-width: 992px) {
@@ -91,18 +100,18 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav ms-auto">
-                            <a class="nav-link divider-nav" aria-current="page" href="#nav">Home</a>
-                            <a class="nav-link divider-nav" href="#footer">Kontak</a>
-                            <a class="nav-link divider-nav" href="#visi_misi">Profile</a>
-                            <a class="nav-link divider-nav" href="#berita-terbaru">Berita</a>
-                            <a class="nav-link" href="{{ route('login') }}" aria-disabled="true">Login</a>
+                            <a class="nav-link divider-nav hover-nav" aria-current="page" href="{{ route('home.index') }}">Home</a>
+                            <a class="nav-link divider-nav hover-nav" href="#footer">Kontak</a>
+                            <a class="nav-link divider-nav hover-nav" href="#visi_misi">Profile</a>
+                            <a class="nav-link divider-nav hover-nav" href="#berita-terbaru">Berita</a>
+                            <a class="nav-link hover-nav" href="{{ route('login') }}" aria-disabled="true">Login</a>
                         </div>
                     </div>
                 </div>
             </nav>
 
             <div class="bg-image">
-                <p class="title text-center fw-bold fs-3 text-light centered">Selamat Datang <br> SMAN 1 KERINCI</p>
+                <h1 class="title text-center fw-bold fs-3 text-light centered">SELAMAT DATANG <br> SMAN 1 KERINCI</h1>
             </div>
         </div>
 
@@ -186,7 +195,7 @@
 
         <div id="berita-terbaru" class="p-5">
             <div class="container">
-                <p class="text-center fs-3 fw-bold my-5">Berita Terkini</p>
+                <p class="text-center fs-3 fw-bold my-5">BERITA TERKINI</p>
                 <div class="row d-flex justify-content-center">
                     @foreach ($newses as $news)
                     <div class="col-sm-4">

@@ -13,18 +13,10 @@ return new class extends Migration
     {
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained(
-                table: 'users', indexName: 'nilai_user_id'
-            );
-            $table->foreignId('kelas_id')->constrained(
-                table: 'kelas', indexName: 'nilai_kelas_id'
-            );
-            $table->foreignId('mapel_id')->constrained(
-                table: 'mapel', indexName: 'nilai_mapel_id'
-            );
-            $table->foreignId('tahun_ajaran_id')->constrained(
-                table: 'tahun_ajaran', indexName: 'nilai_tahun_ajaran_id'
-            );
+            $table->integer('user_id');
+            $table->integer('kelas_id');
+            $table->integer('mapel_id');
+            $table->integer('tahun_ajaran_id');
             $table->integer('nilai_uts')->nullable();
             $table->integer('nilai_uas')->nullable();
             $table->timestamps();

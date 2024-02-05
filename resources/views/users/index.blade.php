@@ -17,6 +17,22 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <form action="#" method="get">
+                        <div class="flex flex-row space-x-4">
+                            <div>
+                                <x-select-input class="gender" name="role" id="gender">
+                                    <option disabled selected>-- Pilih Role --</option>
+                                    <option value="">Semua</option>
+                                    <option @selected(request()->role == 1) value="1">Admin</option>
+                                    <option @selected(request()->role == 2) value="2">Guru</option>
+                                    <option @selected(request()->role == 3) value="3">Siswa</option>
+                                </x-select-input>
+                            </div>
+                            <div>
+                                <x-primary-button>Cari</x-primary-button>
+                            </div>
+                        </div>
+                    </form>
                     <table class="w-full whitespace-nowrap">
                         <thead>
                             <tr class="text-left font-bold">

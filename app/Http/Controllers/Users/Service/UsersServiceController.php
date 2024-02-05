@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\Hash;
 class UsersServiceController extends Controller
 {
     public function getUsers(){
-        return User::latest()->paginate(10);
+        $userQuery = User::latest();
+
+        if(request()->filled('role')){
+            $userQuery->where('role', request()->role);
+        }
+
+        return $userQuery->paginate(10);
     }
 
     public function getUsersById($id){
