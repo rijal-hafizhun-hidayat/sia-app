@@ -15,11 +15,10 @@ class BeritaServiceController extends Controller
         return Berita::orderBy('created_at', 'desc')->take(3)->get();
     }
 
-    public function storeData($payload, $filePath){
+    public function storeData($payload){
         return Berita::create([
             'judul' => $payload['judul'],
-            'isi_berita' => $payload['isi_berita'],
-            'cover' => $filePath
+            'isi_berita' => $payload['isi_berita']
         ]);
     }
 
@@ -31,11 +30,10 @@ class BeritaServiceController extends Controller
         return $news->delete();
     }
 
-    public function updateDataById(Berita $news, $payload, $filePath){
+    public function updateDataById(Berita $news, $payload){
         return $news->update([
             'judul' => $payload['judul'],
-            'isi_berita' => $payload['isi_berita'],
-            'cover' => $filePath ?? $news->cover
+            'isi_berita' => $payload['isi_berita']
         ]);
     }
 }

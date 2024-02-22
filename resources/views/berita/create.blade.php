@@ -22,11 +22,6 @@
                             <x-input-error class="mt-2" :messages="$errors->get('isi_berita')" />
                         </div>
                         <div class="max-w-xl">
-                            <x-input-label for="cover" :value="'Cover Berita'" />
-                            <input type="file" name="cover" id="cover">
-                            <x-input-error class="mt-2" :messages="$errors->get('cover')" />
-                        </div>
-                        <div class="max-w-xl">
                             <x-primary-button>Submit</x-primary-button>
                         </div>
                     </form>

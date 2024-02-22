@@ -25,7 +25,7 @@ class StoreBeritaRequest extends FormRequest
         return [
             'judul' => 'required|string',
             'isi_berita' => 'required|string',
-            'cover' => 'required|file|image'
+            'cover' => 'nullable'
         ];
     }
 }

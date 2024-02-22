@@ -60,7 +60,8 @@ class UsersServiceController extends Controller
             'password' => $request->password,
             'nis' => $request->nis,
             'kelas_id' => $request->kelas_id,
-            'gender' => $request->gender
+            'gender' => $request->gender,
+            'nip' => $request->nip
         ]);
 
         return redirect()->route('users.index')->withSuccess('Data berhasil disimpan');
@@ -76,6 +77,7 @@ class UsersServiceController extends Controller
         $user->nis = $request->nis ?? null;
         $user->kelas_id = $request->kelas_id;
         $user->gender = $request->gender;
+        $user->nip = $request->nip ?? null;
 
         $user->save();
 

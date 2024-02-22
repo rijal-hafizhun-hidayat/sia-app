@@ -29,8 +29,8 @@ class BeritaController extends Controller
 
     public function store(StoreBeritaRequest $request){
         $payload = $request->validated();
-        $filePath = Storage::putFile('public/berita', $request->file('cover'));
-        $this->beritaService->storeData($payload, $filePath);
+        //$filePath = Storage::putFile('public/berita', $request->file('cover'));
+        $this->beritaService->storeData($payload);
 
         return redirect()->route('berita.index')->withSuccess('Data berhasil disimpan');
     }
@@ -51,16 +51,9 @@ class BeritaController extends Controller
     public function update(UpdateBeritaRequest $request, $id){
         $payload = $request->validated();
 
-        if($request->hasFile('cover')){
-            $filePath = Storage::putFile('public/berita', $request->file('cover'));
-        }
-        else{
-            $filePath = null;
-        }
-
         $news = $this->beritaService->findById($id);
 
-        $this->beritaService->updateDataById($news, $payload, $filePath);
+        $this->beritaService->updateDataById($news, $payload);
 
         return redirect()->route('berita.index')->withSuccess('Data berhasil diubah');
     }

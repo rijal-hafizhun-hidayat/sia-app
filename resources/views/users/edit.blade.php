@@ -32,10 +32,15 @@
                             </x-select-input>
                             <x-input-error class="mt-2" :messages="$errors->get('role')" />
                         </div>
-                        <div class="max-w-xl hidden" id="nis">
+                        <div class="max-w-xl @if ($user->role != 3) hidden @endif" id="nis">
                             <x-input-label for="nis-input" :value="'Nis'" />
                             <x-text-input id="nis-input" name="nis" type="number" class="w-full" :value="$user->nis"/>
                             <x-input-error class="mt-2" :messages="$errors->get('nis')" />
+                        </div>
+                        <div class="max-w-xl @if ($user->role != 2) hidden @endif" id="nip">
+                            <x-input-label for="nis-input" :value="'NiP'" />
+                            <x-text-input id="nip-input" name="nip" type="number" class="w-full" :value="$user->nip"/>
+                            <x-input-error class="mt-2" :messages="$errors->get('nip')" />
                         </div>
                         <div class="max-w-xl hidden" id="kelas">
                             <x-input-label for="kelas_id" :value="'Kelas'" />
@@ -50,8 +55,7 @@
                         <div class="max-w-xl">
                             <x-input-label for="gender" :value="'gender'" />
                             <x-select-input class="gender" name="gender" id="gender">
-                                <option disabled selected>-- Pilih --</option>
-                                <option @selected($user->gender == 'Laku-laki') value="Laki-laki">Laki-laki</option>
+                                <option @selected($user->gender == 'Laki-laki') value="Laki-laki">Laki-laki</option>
                                 <option @selected($user->gender == 'Perempuan') value="Perempuan">Perempuan</option>
                             </x-select-input>
                             <x-input-error class="mt-2" :messages="$errors->get('gender')" />
@@ -95,15 +99,26 @@
                 $('#password').val(Math.floor(100000 + Math.random() * 900000));
 
                 if($('#role').val() == 3){
+                    $('#kelas').removeClass('hidden');
                     $('#nis').removeClass('hidden');
+                    $('#nip').addClass('hidden');
 
                     $('#nis').change(function() { 
                         setUsernamePasswordSiswa()
                     });
                 }
+                else if($('#role').val() == 2){
+                    $('#kelas').addClass('hidden');
+                    $('#nis').addClass('hidden');
+
+                    $('#nip').removeClass('hidden');
+
+                    setUsernamePasswordGuruAdmin()
+                }
                 else{
                     $('#kelas').addClass('hidden');
                     $('#nis').addClass('hidden');
+                    $('#nip').addClass('hidden');
 
                     setUsernamePasswordGuruAdmin()
                 }

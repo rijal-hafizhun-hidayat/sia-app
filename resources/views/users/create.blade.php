@@ -36,6 +36,11 @@
                             <x-text-input id="nis-input" name="nis" type="number" class="w-full" :value="old('nis')"/>
                             <x-input-error class="mt-2" :messages="$errors->get('nis')" />
                         </div>
+                        <div class="max-w-xl hidden" id="nip">
+                            <x-input-label for="nis-input" :value="'NiP'" />
+                            <x-text-input id="nip-input" name="nip" type="number" class="w-full" :value="old('nip')"/>
+                            <x-input-error class="mt-2" :messages="$errors->get('nip')" />
+                        </div>
                         <div class="max-w-xl hidden" id="kelas">
                             <x-input-label for="kelas_id" :value="'Kelas'" />
                             <x-select-input class="w-full" name="kelas_id" id="kelas_id">
@@ -94,14 +99,24 @@
                 if($('#role').val() == 3){
                     $('#kelas').removeClass('hidden');
                     $('#nis').removeClass('hidden');
+                    $('#nip').addClass('hidden');
 
                     $('#nis').change(function() { 
                         setUsernamePasswordSiswa()
                     });
                 }
+                else if($('#role').val() == 2){
+                    $('#kelas').addClass('hidden');
+                    $('#nis').addClass('hidden');
+
+                    $('#nip').removeClass('hidden');
+
+                    setUsernamePasswordGuruAdmin()
+                }
                 else{
                     $('#kelas').addClass('hidden');
                     $('#nis').addClass('hidden');
+                    $('#nip').addClass('hidden');
 
                     setUsernamePasswordGuruAdmin()
                 }

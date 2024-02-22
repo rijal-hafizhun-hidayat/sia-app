@@ -31,7 +31,8 @@ class User extends Authenticatable
         'role',
         'username',
         'password',
-        'gender'
+        'gender',
+        'nip'
     ];
 
     /**

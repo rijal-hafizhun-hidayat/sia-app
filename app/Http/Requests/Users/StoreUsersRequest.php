@@ -40,7 +40,8 @@ class StoreUsersRequest extends FormRequest
             'email' => 'email:rfc,dns',
             'nis' => 'nullable|numeric',
             'kelas_id' => 'nullable|numeric',
-            'gender' => 'required|string'
+            'gender' => 'required|string',
+            'nip' => 'nullable|numeric'
         ];
     }
 }
