@@ -17,6 +17,16 @@
                             <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                         </div>
                         <div class="max-w-xl">
+                            <x-input-label for="tahun_ajaran" :value="'Tahun Ajaran'" />
+                            <x-select-input class="w-full" name="tahun_ajaran" id="tahun_ajaran">
+                                <option disabled selected>-- Pilih --</option>
+                                @foreach ($tahun_ajarans as $tahun_ajaran)
+                                <option value="{{ $tahun_ajaran->nama }}">{{ $tahun_ajaran->nama }}</option>
+                                @endforeach
+                            </x-select-input>
+                            <x-input-error class="mt-2" :messages="$errors->get('tahun_ajaran')" />
+                        </div>
+                        <div class="max-w-xl">
                             <x-primary-button>Submit</x-primary-button>
                         </div>
                     </form>

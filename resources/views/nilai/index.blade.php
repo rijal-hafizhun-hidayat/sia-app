@@ -9,7 +9,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if (Auth::user()->role != 3)
             <form action="{{ route('nilai.index') }}" method="get">
-                @csrf
                 <div class="flex flex-row space-x-4 mb-4">
                     <div>
                         <x-text-input id="search_user" name="search_user" class="w-full" :placeholder="'Cari Siswa'"/>
@@ -17,8 +16,18 @@
                     <div>
                         <x-select-input class="w-full" name="search_class" id="search_class">
                             <option disabled selected>-- Pilih Kelas --</option>
+                            <option value="">semua</option>
                             @foreach ($classs as $class)
                             <option value="{{ $class->id }}">{{ $class->nama }}</option>
+                            @endforeach
+                        </x-select-input>
+                    </div>
+                    <div>
+                        <x-select-input class="w-full" name="tahun_ajaran" id="tahun_ajaran">
+                            <option disabled selected>-- Pilih Tahun Ajaran --</option>
+                            <option value="">semua</option>
+                            @foreach ($tahun_ajarans as $tahun_ajaran)
+                            <option value="{{ $tahun_ajaran->nama }}">{{ $tahun_ajaran->nama }}</option>
                             @endforeach
                         </x-select-input>
                     </div>

@@ -30,7 +30,7 @@ class UsersServiceController extends Controller
     }
 
     public function getSiswa(){
-        $user = User::where('role', User::ROLE_SISWA);
+        $user = User::with('kelas')->where('role', User::ROLE_SISWA);
 
         if(Auth::user()->role == 3){
             $user->where('nama', Auth::user()->nama);
@@ -41,6 +41,11 @@ class UsersServiceController extends Controller
             }
             if(request()->filled('search_class')){
                 $user->where('kelas_id', request()->search_class);
+            }
+            if(request()->filled('tahun_ajaran')){
+                $user->whereHas('kelas', function($query){
+                    $query->where('tahun_ajaran', request()->tahun_ajaran);
+                });
             }
         }
         

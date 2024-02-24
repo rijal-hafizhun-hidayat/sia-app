@@ -32,10 +32,12 @@ class NilaiController extends Controller
     public function index(){
         $student = $this->userService->getSiswa();
         $class = $this->kelasService->getAll();
+        $tahun_ajarans = $this->tahunAjaranService->getTahunAjaran();
 
         return view('nilai/index', [
             'students' => $student,
-            'classs' => $class
+            'classs' => $class,
+            'tahun_ajarans' => $tahun_ajarans
         ]);
     }
 

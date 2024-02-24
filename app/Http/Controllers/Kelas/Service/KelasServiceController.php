@@ -10,7 +10,14 @@ use Illuminate\Http\Request;
 class KelasServiceController extends Controller
 {
     public function getKelas(){
-        return Kelas::latest()->paginate(10);
+        if(request()->filled('tahun_ajaran')){
+            $kelas = Kelas::where('tahun_ajaran', request()->tahun_ajaran)->latest()->paginate(10);
+        }
+        else{
+            $kelas = Kelas::latest()->paginate(10);
+        }
+
+        return $kelas;
     }
 
     public function getAll(){
@@ -23,7 +30,8 @@ class KelasServiceController extends Controller
 
     public function store(StoreKelasRequest $request){
         Kelas::create([
-            'nama' => $request->nama
+            'nama' => $request->nama,
+            'tahun_ajaran' => $request->tahun_ajaran
         ]);
         return redirect()->route('kelas.index')->withSuccess('Data berhasil disimpan');
     }
@@ -32,6 +40,7 @@ class KelasServiceController extends Controller
         $kelas = Kelas::find($id);
  
         $kelas->nama = $request->nama;
+        $kelas->tahun_ajaran = $request->tahun_ajaran;
         
         $kelas->save();
 

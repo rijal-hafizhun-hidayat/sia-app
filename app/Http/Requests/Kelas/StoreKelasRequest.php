@@ -30,7 +30,8 @@ class StoreKelasRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required|string'
+            'nama' => 'required|string',
+            'tahun_ajaran' => 'required|string'
         ];
     }
 }

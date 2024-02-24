@@ -22,6 +22,25 @@
             </div>
         </div>
         @endif
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <form action="#" method="get">
+                <div class="flex flex-row space-x-4">
+                    <div>
+                        <x-select-input name="tahun_ajaran">
+                            <option value="">Semua</option>
+                            @foreach ($tahun_ajarans as $tahun_ajaran)
+                                <option @selected(request()->tahun_ajaran == $tahun_ajaran->nama) value="{{ $tahun_ajaran->nama }}">{{ $tahun_ajaran->nama }}</option>
+                            @endforeach
+                        </x-select-input>
+                    </div>
+                    <div>
+                        <x-primary-button>Cari</x-primary-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
         
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-x-auto shadow-md sm:rounded-lg">
@@ -30,6 +49,7 @@
                         <thead>
                             <tr class="text-left font-bold">
                                 <th class="pb-4 pt-6 px-6">Nama Kelas</th>
+                                <th class="pb-4 pt-6 px-6">Tahun Ajaran</th>
                                 <th class="pb-4 pt-6 px-6">Action</th>
                             </tr>
                         </thead>
@@ -38,6 +58,9 @@
                             <tr class="hover:bg-gray-100 uppercase">
                                 <td class="border-t items-center px-6 py-4">
                                     {{ $kelas->nama }}
+                                </td>
+                                <td class="border-t items-center px-6 py-4">
+                                    {{ $kelas->tahun_ajaran }}
                                 </td>
                                 <td class="border-t items-center px-6 py-4">
                                     <div class="flex flex-row space-x-4">
