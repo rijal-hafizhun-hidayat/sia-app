@@ -7,12 +7,13 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @if (Auth::user()->role != 3)
             <form action="{{ route('nilai.index') }}" method="get">
                 <div class="flex flex-row space-x-4 mb-4">
-                    <div>
-                        <x-text-input id="search_user" name="search_user" class="w-full" :placeholder="'Cari Siswa'"/>
-                    </div>
+                    @if (Auth::user()->role != 3)
+                        <div>
+                            <x-text-input id="search_user" name="search_user" class="w-full" :placeholder="'Cari Siswa'"/>
+                        </div>
+                    @endif
                     <div>
                         <x-select-input class="w-full" name="search_class" id="search_class">
                             <option disabled selected>-- Pilih Kelas --</option>
@@ -35,8 +36,8 @@
                         <x-primary-button>Submit</x-primary-button>
                     </div>
                 </div>  
-            @endif
             </form>
+            
             <div class="bg-white overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <table class="w-full whitespace-nowrap">

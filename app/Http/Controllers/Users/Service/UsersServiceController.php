@@ -18,6 +18,10 @@ class UsersServiceController extends Controller
             $userQuery->where('role', request()->role);
         }
 
+        if(request()->filled('kelas_id')){
+            $userQuery->where('kelas_id', request()->kelas_id);
+        }
+
         return $userQuery->paginate(10);
     }
 
@@ -35,18 +39,16 @@ class UsersServiceController extends Controller
         if(Auth::user()->role == 3){
             $user->where('nama', Auth::user()->nama);
         }
-        else{
-            if(request()->filled('search_user')){
-                $user->where('nama', 'like', '%'.request()->search_user.'%');
-            }
-            if(request()->filled('search_class')){
-                $user->where('kelas_id', request()->search_class);
-            }
-            if(request()->filled('tahun_ajaran')){
-                $user->whereHas('kelas', function($query){
-                    $query->where('tahun_ajaran', request()->tahun_ajaran);
-                });
-            }
+        if(request()->filled('search_user')){
+            $user->where('nama', 'like', '%'.request()->search_user.'%');
+        }
+        if(request()->filled('search_class')){
+            $user->where('kelas_id', request()->search_class);
+        }
+        if(request()->filled('tahun_ajaran')){
+            $user->whereHas('kelas', function($query){
+                $query->where('tahun_ajaran', request()->tahun_ajaran);
+            });
         }
         
         return $user->paginate(10);

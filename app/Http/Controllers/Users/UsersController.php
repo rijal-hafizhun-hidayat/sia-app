@@ -21,7 +21,8 @@ class UsersController extends Controller
 
     public function index(){
         return view('users/index', [
-            'users' => $this->users->getUsers()
+            'users' => $this->users->getUsers(),
+            'kelass' => $this->kelas->getAll()
         ]);
     }
 

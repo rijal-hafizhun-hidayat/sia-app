@@ -31,11 +31,14 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
         
-        if($user->role != 3){
+        if($user->role == 1){
             return redirect()->intended(RouteServiceProvider::USER);
         }
-        else{
-            return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        else if($user->role == 2){
+            return redirect()->intended(RouteServiceProvider::kelas);
+        }
+        else if($user->role == 3){
+            return redirect()->intended(RouteServiceProvider::HOME);
         }
     }
 

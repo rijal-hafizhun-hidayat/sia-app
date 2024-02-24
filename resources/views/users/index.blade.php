@@ -29,6 +29,15 @@
                                 </x-select-input>
                             </div>
                             <div>
+                                <x-select-input name="kelas_id" id="kelas_id">
+                                    <option disabled selected>-- Pilih Kelas --</option>
+                                    <option value="">Semua</option>
+                                    @foreach ($kelass as $kelas)
+                                        <option @selected(request()->kelas_id == $kelas->id) value="{{ $kelas->id }}">{{ $kelas->nama }}</option>
+                                    @endforeach
+                                </x-select-input>
+                            </div>
+                            <div>
                                 <x-primary-button>Cari</x-primary-button>
                             </div>
                         </div>

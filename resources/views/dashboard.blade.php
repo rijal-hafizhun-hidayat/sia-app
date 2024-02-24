@@ -1,7 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            @if (Auth::user()->role == 3)
+                {{ __('Jadwal Mata Pelajaran') }}
+            @else
+                {{ __('Dashboard') }}
+            @endif
         </h2>
     </x-slot>
 
@@ -15,6 +19,24 @@
         </div>
 
         @if (Auth::user()->role == 3)
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <form action="{{ route('dashboard') }}" method="get">
+                <div class="flex flex-row space-x-4">
+                    <div>
+                        <x-select-input name="tahun_ajaran">
+                            <option value="">Semua</option>
+                            @foreach ($tahun_ajarans as $tahun_ajaran)
+                                <option @selected(request()->tahun_ajaran == $tahun_ajaran->nama) value="{{ $tahun_ajaran->nama }}">{{ $tahun_ajaran->nama }}</option>
+                            @endforeach
+                        </x-select-input>
+                    </div>
+                    <div>
+                        <x-primary-button>Cari</x-primary-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
                 <div class="p-6 text-gray-900">

@@ -4,16 +4,19 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Mapel\Service\MapelServiceController;
+use App\Http\Controllers\TahunAjaran\Services\TahunAjaranServiceController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     protected $mapelService;
+    protected $tahunAjaranService;
 
     public function __construct()
     {
-        $this->mapelService = new MapelServiceController;    
+        $this->mapelService = new MapelServiceController;
+        $this->tahunAjaranService = new TahunAjaranServiceController;    
     }
     public function index(){
         $user = Auth::user();
@@ -25,7 +28,8 @@ class DashboardController extends Controller
         }
 
         return view('dashboard', [
-            'mapels' => $mapels
+            'mapels' => $mapels,
+            'tahun_ajarans' => $this->tahunAjaranService->getTahunAjaran()
         ]);
     }
 }

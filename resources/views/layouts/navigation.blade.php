@@ -12,13 +12,15 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @if (Auth::user()->role == 3)
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         @if (Auth::user()->role == 3)
-                            Jadwal Kelas
+                            Jadwal Mata Pelajaran
                         @else
                             Dashboard
                         @endif
                     </x-nav-link>
+                    @endif
                     @if (Auth::user()->role == 1)
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                         User
