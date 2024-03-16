@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Kelas\Service\KelasServiceController;
 use App\Http\Controllers\TahunAjaran\Services\TahunAjaranServiceController;
 use App\Http\Controllers\Users\Service\UsersServiceController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KelasController extends Controller
 {
@@ -53,5 +55,56 @@ class KelasController extends Controller
             'mapels' => $kelas->mapel,
             'students' => $kelas->user
         ]);
+    }
+
+    public function createWali($kelasId){
+        return view('kelas/create-wali', [
+            'gurus' => $this->userService->getUsersByRole(2),
+            'kelas_id' => $kelasId
+        ]);
+    }
+
+    public function showWali($id){
+        return view('kelas/update-wali', [
+            'kelas' => $this->kelasService->getKelasById($id),
+            'gurus' => $this->userService->getUsersByRole(2),
+            'kelas_id' => $id
+        ]);
+    }
+
+    public function updateWali(Request $request, $id){
+        $payload = $request->validate([
+            'wali' => 'required|numeric'
+        ]);
+
+        try {
+            DB::beginTransaction();
+            $kelas = $this->kelasService->getKelasById($id);
+            $this->kelasService->updateWaliKelas($kelas, $payload);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+
+        return redirect()->route('kelas.detail', ['id' => $id])->withSuccess('ubah data berhasil');
+    }
+
+    public function storeWali(Request $request, $id){
+        $payload = $request->validate([
+            'wali' => 'required|numeric'
+        ]);
+
+        try {
+            DB::beginTransaction();
+            $kelas = $this->kelasService->getKelasById($id);
+            $this->kelasService->updateWaliKelas($kelas, $payload);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+
+        return redirect()->route('kelas.detail', ['id' => $id])->withSuccess('simpan data berhasil');
     }
 }

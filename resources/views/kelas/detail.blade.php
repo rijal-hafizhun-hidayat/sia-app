@@ -80,6 +80,44 @@
                     </table>
                 </div>
             </div>
+
+            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <div class="flex justify-between">
+                        <div>
+                            <p>Wali Kelas</p>
+                        </div>
+                        @if (is_null($kelas->wali))
+                            <div>
+                                <x-create-button :href="route('kelas.detail.wali.create', ['id' => $kelas->id])">Tambah Wali Kelas</x-create-button>
+                            </div>
+                        @endif
+                    </div>
+                    
+                    <table class="w-full whitespace-nowrap">
+                        <thead>
+                            <tr class="text-left font-bold">
+                                <th class="pb-4 pt-6 px-6">Nama Guru</th>
+                                <th class="pb-4 pt-6 px-6">Email</th>
+                                @if (!is_null($kelas->wali))
+                                    <th class="pb-4 pt-6 px-6">Aksi</th>
+                                @endif
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border-t items-center px-6 py-4">{{ is_null($kelas->wali) ? '-' : $kelas->wali->nama }}</td>
+                                <td class="border-t items-center px-6 py-4">{{ is_null($kelas->wali) ? '-' : $kelas->wali->email }}</td>
+                                @if (!is_null($kelas->wali))
+                                    <td>
+                                        <x-detail-button :href="route('kelas.detail.wali.show', ['id' => $kelas->id])">Ubah</x-detail-button>
+                                    </td>
+                                @endif
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>

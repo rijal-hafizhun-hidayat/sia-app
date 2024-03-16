@@ -25,7 +25,7 @@ class KelasServiceController extends Controller
     }
 
     public function getKelasById($id){
-        return Kelas::find($id);
+        return Kelas::with('wali')->find($id);
     }
 
     public function store(StoreKelasRequest $request){
@@ -49,8 +49,13 @@ class KelasServiceController extends Controller
 
     public function destroy($id){
         Kelas::destroy($id);
-        
 
         return redirect()->route('kelas.index')->withSuccess('Data berhasil dihapus');
+    }
+
+    public function updateWaliKelas(Kelas $kelas, $payload){
+        return $kelas->update([
+            'wali_kelas' => $payload['wali']
+        ]);
     }
 }

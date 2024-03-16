@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Kelas extends Model
 {
@@ -22,5 +24,10 @@ class Kelas extends Model
     public function user(): HasMany
     {
         return $this->hasMany(User::class);
+    }
+
+    public function wali(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'wali_kelas', 'id');
     }
 }
