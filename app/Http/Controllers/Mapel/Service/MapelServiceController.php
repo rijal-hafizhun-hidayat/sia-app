@@ -81,16 +81,15 @@ class MapelServiceController extends Controller
     public function printNilaiMapel($payload){
         $mapel = Mapel::with(['nilai.user', 'kelas'])->where('user_id', Auth::id());
 
-        if(isset($payload['search_class'])){
-            $mapel->where('kelas_id', $payload['search_class']);
-        }
+        $mapel->whereHas('nilai', function($query) use ($payload){
+            if(isset($payload['tahun_ajaran'])){
+                $query->where('tahun_ajaran_id', $payload['tahun_ajaran']);
+            }
 
-        if(isset($payload['tahun_ajaran'])){
-            $tahunAjaran = $payload['tahun_ajaran'];
-            $mapel->whereHas('nilai', function($query) use ($tahunAjaran){
-                $query->where('tahun_ajaran_id', $tahunAjaran);
-            });
-        }
+            if(isset($payload['search_class'])){
+                $query->where('kelas_id', $payload['search_class']);
+            }
+        });
 
         return $mapel->get();
     }

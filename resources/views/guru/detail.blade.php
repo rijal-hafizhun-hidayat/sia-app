@@ -1,20 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Detail Guru
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-4">
-            <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="p-6 text-gray-900">
                     @include('guru.partials.detail-guru')
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="p-6 text-gray-900">
                     <div class="flex flex-row-reverse">
                         <div>
                             <x-primary-button x-data=""
@@ -25,7 +25,7 @@
                         <form method="post" action="{{ route('guru.mapel.update', ['id' => $guru->id]) }}" class="p-6">
                             @csrf
                             @method('PUT')
-                            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                            <h2 class="text-lg font-medium text-gray-900">
                                 Tambah Mata Pelajaran Guru
                             </h2>
                 
