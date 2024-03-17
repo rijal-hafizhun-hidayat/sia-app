@@ -87,10 +87,12 @@
                         <div>
                             <p>Wali Kelas</p>
                         </div>
-                        @if (is_null($kelas->wali))
-                            <div>
-                                <x-create-button :href="route('kelas.detail.wali.create', ['id' => $kelas->id])">Tambah Wali Kelas</x-create-button>
-                            </div>
+                        @if (Auth::user()->role == 1)
+                            @if (is_null($kelas->wali))
+                                <div>
+                                    <x-create-button :href="route('kelas.detail.wali.create', ['id' => $kelas->id])">Tambah Wali Kelas</x-create-button>
+                                </div>
+                            @endif
                         @endif
                     </div>
                     
@@ -99,20 +101,26 @@
                             <tr class="text-left font-bold">
                                 <th class="pb-4 pt-6 px-6">Nama Guru</th>
                                 <th class="pb-4 pt-6 px-6">Email</th>
-                                @if (!is_null($kelas->wali))
-                                    <th class="pb-4 pt-6 px-6">Aksi</th>
+                                @if (Auth::user()->role == 1)
+                                    @if (!is_null($kelas->wali))
+                                        <th class="pb-4 pt-6 px-6">Aksi</th>
+                                    @endif
                                 @endif
+                                
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td class="border-t items-center px-6 py-4">{{ is_null($kelas->wali) ? '-' : $kelas->wali->nama }}</td>
                                 <td class="border-t items-center px-6 py-4">{{ is_null($kelas->wali) ? '-' : $kelas->wali->email }}</td>
-                                @if (!is_null($kelas->wali))
-                                    <td>
-                                        <x-detail-button :href="route('kelas.detail.wali.show', ['id' => $kelas->id])">Ubah</x-detail-button>
-                                    </td>
+                                @if (Auth::user()->role == 1)
+                                    @if (!is_null($kelas->wali))
+                                        <td>
+                                            <x-detail-button :href="route('kelas.detail.wali.show', ['id' => $kelas->id])">Ubah</x-detail-button>
+                                        </td>
+                                    @endif
                                 @endif
+                                
                             </tr>
                         </tbody>
                     </table>

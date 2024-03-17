@@ -11,7 +11,7 @@
                 <div class="flex flex-row space-x-4 mb-4">
                     @if (Auth::user()->role != 3)
                         <div>
-                            <x-text-input id="search_user" name="search_user" class="w-full" :placeholder="'Cari Siswa'"/>
+                            <x-text-input id="search_user" name="search_user" class="w-full" :placeholder="'Cari Siswa'" :value="request()->search_user"/>
                         </div>
                     @endif
                     <div>
@@ -19,7 +19,7 @@
                             <option disabled selected>-- Pilih Kelas --</option>
                             <option value="">semua</option>
                             @foreach ($classs as $class)
-                            <option value="{{ $class->id }}">{{ $class->nama }}</option>
+                            <option @selected(request()->search_class == $class->id) value="{{ $class->id }}">{{ $class->nama }}</option>
                             @endforeach
                         </x-select-input>
                     </div>
@@ -28,7 +28,7 @@
                             <option disabled selected>-- Pilih Tahun Ajaran --</option>
                             <option value="">semua</option>
                             @foreach ($tahun_ajarans as $tahun_ajaran)
-                            <option value="{{ $tahun_ajaran->nama }}">{{ $tahun_ajaran->nama }}</option>
+                            <option @selected(request()->tahun_ajaran == $tahun_ajaran->nama) value="{{ $tahun_ajaran->nama }}">{{ $tahun_ajaran->nama }}</option>
                             @endforeach
                         </x-select-input>
                     </div>

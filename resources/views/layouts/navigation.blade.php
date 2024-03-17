@@ -55,6 +55,10 @@
                     <x-nav-link :href="route('nilai.index')" :active="request()->routeIs('nilai.*')">
                         Nilai
                     </x-nav-link>
+
+                    <x-nav-link :href="route('report-nilai.index')" :active="request()->routeIs('report-nilai.*')">
+                        Laporan Nilai
+                    </x-nav-link>
                 </div>
             </div>
 

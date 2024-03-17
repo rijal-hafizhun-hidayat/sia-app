@@ -36,6 +36,14 @@
             </div>
             @endif
 
+            @if(session('errors'))
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-red-500 p-5 mt-5 rounded">
+                    <h1>{{session('errors')}}</h1>
+                </div>
+            </div>
+            @endif
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}

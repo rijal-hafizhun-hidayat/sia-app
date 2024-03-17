@@ -17,6 +17,10 @@ class TahunAjaranServiceController extends Controller
         return TahunAjaran::find($id);
     }
 
+    public function findTahunAjaranByName($name){
+        return TahunAjaran::where('nama', 'like', '%'.$name.'%')->first();
+    }
+
     public function store(StoreTahunAjaranRequest $request){
         TahunAjaran::create([
             'nama' => $request->nama

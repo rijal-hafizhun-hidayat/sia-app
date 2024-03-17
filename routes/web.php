@@ -133,6 +133,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}', [BeritaController::class, 'tampil'])->name('berita.tampil');
         Route::put('/{id}', [BeritaController::class, 'update'])->name('berita.update');
     });
+
+    Route::prefix('/report-nilai')->group(function(){
+        Route::get('/', [NilaiController::class, 'reportNilai'])->name('report-nilai.index');
+        Route::post('/', [NilaiController::class, 'printReportNilai'])->name('report-nilai.print');
+    });
 });
 
 require __DIR__.'/auth.php';

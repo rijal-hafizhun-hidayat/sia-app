@@ -16,12 +16,12 @@ class MapelController extends Controller
     protected $mapelService;
     protected $kelasService;
 
-    public function __construct()
+    public function __construct(UsersServiceController $users, MapelServiceController $mapelService, KelasServiceController $kelasService)
     {
         $this->hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-        $this->users = new UsersServiceController;
-        $this->mapelService = new MapelServiceController;
-        $this->kelasService = new KelasServiceController;
+        $this->users = $users;
+        $this->mapelService = $mapelService;
+        $this->kelasService = $kelasService;
     }
 
     public function index(){

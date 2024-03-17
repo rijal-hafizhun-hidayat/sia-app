@@ -29,4 +29,9 @@ class Mapel extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function nilai(): HasMany
+    {
+        return $this->hasMany(Nilai::class);
+    }
 }

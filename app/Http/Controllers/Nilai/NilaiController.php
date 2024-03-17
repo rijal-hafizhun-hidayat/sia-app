@@ -11,7 +11,7 @@ use App\Http\Controllers\Users\Service\UsersServiceController;
 use App\Http\Requests\Nilai\StoreNilaiRequest;
 use App\Http\Requests\Nilai\UpdateNilaiRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class NilaiController extends Controller
 {
@@ -20,13 +20,14 @@ class NilaiController extends Controller
     protected $mapelService;
     protected $kelasService;
     protected $tahunAjaranService;
-    public function __construct()
+
+    public function __construct(NilaiServiceController $nilaiService, UsersServiceController $userService, MapelServiceController $mapelService, KelasServiceController $kelasService, TahunAjaranServiceController $tahunAjaranService)
     {
-        $this->nilaiService = new NilaiServiceController();
-        $this->userService = new UsersServiceController();
-        $this->mapelService = new MapelServiceController();
-        $this->kelasService = new KelasServiceController();
-        $this->tahunAjaranService = new TahunAjaranServiceController();   
+        $this->nilaiService = $nilaiService;
+        $this->userService = $userService;
+        $this->mapelService = $mapelService;
+        $this->kelasService = $kelasService;
+        $this->tahunAjaranService = $tahunAjaranService;   
     }
     
     public function index(){
@@ -93,5 +94,24 @@ class NilaiController extends Controller
             'scores' => $scores,
             'user' => $user,
         ]);
+    }
+
+    public function reportNilai(){
+        return view('nilai/report-nilai', [
+            'classs' => $this->kelasService->getAll(),
+            'tahun_ajarans' => $this->tahunAjaranService->getTahunAjaran()
+        ]);
+    }
+
+    public function printReportNilai(Request $request){
+        $payload = $request->validate([
+            'search_class' => 'nullable|numeric',
+            'tahun_ajaran' => 'nullable|numeric'
+        ]);
+
+        $mapel = $this->mapelService->printNilaiMapel($payload);
+
+        $pdf = PDF::loadview('nilai/report-nilai-pdf',['mapels' => $mapel]);
+    	return $pdf->stream('laporan-nilai-pdf', array("Attachment" => false));
     }
 }
