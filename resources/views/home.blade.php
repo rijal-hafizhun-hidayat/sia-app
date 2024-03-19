@@ -45,7 +45,7 @@
                     max-width: 80px;
                     height: auto;
                 }
-
+                
                 .hover-nav{
                     border-radius: 10px;
                 }
@@ -111,7 +111,7 @@
             </nav>
 
             <div class="bg-image">
-                <h1 class="title text-center fw-bold fs-3 text-light centered">SELAMAT DATANG <br> SMAN 1 KERINCI</h1>
+                <h1 class="title text-center fw-bold text-light centered" style="font-size: 80px;">SELAMAT DATANG <br> SMAN 1 KERINCI</h1>
             </div>
         </div>
 
@@ -165,7 +165,7 @@
                     </div>
                     <div class="col-sm-6">
                         <p class="fs-2 fw-bold">Visi-misi</p>
-                        <ol>
+                        <ol class="fw-semibold">
                             <li>Membudayakan sikap disiplin, toleransi, saling menghargai, percaya diri, jujur dan mandiri dalam pergaulan serta solidaritas terhadap keanekaragaman bangsa Indonesia pada kegiatan intrakurikuler dan ekstrakurikule</li>
                             <li>Mengembangkan sikap kreatif,komunikatif,kolaborasi dan integritas serta semangat kebangsaan pada kegiatn intrakurikuler dan proyek profil pancasila</li>
                             <li>Mempersiapkan peserta didik agar mampu menempatkan diri dalam hidup bermasyarakat dengan bekal ilmu yang diperolehnya</li>
@@ -178,7 +178,7 @@
                 <div class="row mt-5">
                     <div class="col-sm-6">
                         <p class="fs-2 fw-bold">Tujuan</p>
-                        <ol>
+                        <ol class="fw-semibold">
                             <li>Terciptanya sikap disiplin, toleransi, saling menghargai, percaya diri, jujur dan mandiri dalam pergaulan</li>
                             <li>Terciptanya peserta didik yang kreatif dan berintegritas serta memiliki semangat kebangsaan</li>
                             <li>Menerapkan pembelajaran aktif yang berbasis IT dan mengembangkan Life skill peserta didik melalui kegiatan intarkurikuler dan ekstrakuikuler.</li>
@@ -193,14 +193,13 @@
             </div>
         </div>
 
-        <div id="berita-terbaru" class="p-5">
-            <div class="container">
-                <p class="text-center fs-3 fw-bold my-5">BERITA TERKINI</p>
+        <div id="berita-terbaru" class="py-1" style="background-color: #A7C7E7;">
+            <div class="container pb-5">
+                <p class="text-center fs-1 fw-bold my-5">BERITA TERKINI</p>
                 <div class="row d-flex justify-content-center">
                     @foreach ($newses as $news)
                     <div class="col-sm-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="{{ Storage::url($news->cover) }}" class="card-img-top img-fluid" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $news->judul }}</h5>
                                 {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
@@ -215,14 +214,14 @@
 
         <div id="footer" class="bg-success text-white">
             <div class="container">
-                <footer class="py-5">
+                <footer class="py-2">
                   <div class="row">
-                    <div class="col-6 col-md-6 mb-3">
+                    <div class="col-6 col-md-6">
                       <h5 class="fs-2 fw-bold">Kontak</h5>
-                      <ul class="nav flex-column mt-3">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> Smankerinci@gmail.com</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 08123456789</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> Koto Baru Hiang, Kec. Sitinjau Laut, Kabupaten Kerinci, Jambi 37171</a></li>
+                      <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary fw-semibold"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> Smankerinci@gmail.com</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary fw-semibold"><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 08123456789</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary fw-semibold"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> Koto Baru Hiang, Kec. Sitinjau Laut, Kabupaten Kerinci, Jambi 37171</a></li>
                       </ul>
                     </div>
               
@@ -239,7 +238,7 @@
                     </div> --}}
                   </div>
               
-                  <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                  <div class="d-flex flex-column flex-sm-row justify-content-between border-top">
                     <p>© 2023 SMAN 1 KERINCI, Inc. All rights reserved.</p>
                     <ul class="list-unstyled d-flex">
                       <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>

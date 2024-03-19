@@ -22,17 +22,26 @@
                 }
 
                 .bg-image{
-                    background-image: url("{{ Storage::url($news->cover) }}");
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: cover;
-                    height: 30rem;
+                    height: 10rem;
+                }
+                
+                .centered {
+                    position: absolute;
+                    top: 40%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
                 }
 
                 .divider-nav{
                     margin-right: 20px;
                 }
-
+                
+                img {
+                    display: block;
+                    max-width: 80px;
+                    height: auto;
+                }
+                
                 .hover-nav{
                     border-radius: 10px;
                 }
@@ -55,6 +64,19 @@
                     background-size: cover;
                     height: 20rem;
                 }
+                
+                img {
+                    display: block;
+                    max-width: 80px;
+                    height: auto;
+                }
+                
+                .centered {
+                    position: absolute;
+                    top: 40%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
             }
         </style>
 
@@ -65,15 +87,18 @@
         <div id="nav">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Sman 1 kerinci</a>
+                    <a class="navbar-brand" href="#">
+                        <img width="30" height="30" src="{{ Storage::url('public/home/logo.jpeg') }}" alt="">
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav ms-auto">
                             <a class="nav-link divider-nav hover-nav" aria-current="page" href="{{ route('home.index') }}">Home</a>
-                            <a class="nav-link divider-nav hover-nav" href="#">Kontak</a>
-                            <a class="nav-link divider-nav hover-nav" href="#">Profile</a>
+                            <a class="nav-link divider-nav hover-nav" href="#footer">Kontak</a>
+                            <a class="nav-link divider-nav hover-nav" href="#visi_misi">Profile</a>
+                            <a class="nav-link divider-nav" href="#berita-terbaru">Berita</a>
                             <a class="nav-link hover-nav" href="{{ route('login') }}" aria-disabled="true">Login</a>
                         </div>
                     </div>
@@ -81,28 +106,28 @@
             </nav>
 
             <div class="bg-image">
-                <p class="title text-center fw-bold fs-3">{{ $news->judul }}</p>
+                <p class="title text-center fw-bold text-light centered text-dark fs-2" style="color: #FFFF00 !important;">{{ $news->judul }}</p>
             </div>
         </div>
 
         <div id="content-news" class="mt-5">
             <div class="container">
                 <div class="row">
-                    <p>{{ $news->isi_berita }}</p>
+                    <p class="fw-semibold">{{ $news->isi_berita }}</p>
                 </div>
             </div>
         </div>
 
         <div id="footer" class="bg-success text-white">
             <div class="container">
-                <footer class="py-5">
+                <footer class="py-2">
                   <div class="row">
-                    <div class="col-6 col-md-2 mb-3">
+                    <div class="col-6 col-md-6">
                       <h5 class="fs-2 fw-bold">Kontak</h5>
-                      <ul class="nav flex-column mt-3">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> Smankerinci@gmail.com</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 08123456789</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> Koto Baru Hiang, Kec. Sitinjau Laut, Kabupaten Kerinci, Jambi 37171</a></li>
+                      <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary fw-semibold"><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> Smankerinci@gmail.com</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary fw-semibold"><i class="fa-solid fa-phone" style="color: #ffffff;"></i> 08123456789</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary fw-semibold"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i> Koto Baru Hiang, Kec. Sitinjau Laut, Kabupaten Kerinci, Jambi 37171</a></li>
                       </ul>
                     </div>
               
@@ -119,7 +144,7 @@
                     </div> --}}
                   </div>
               
-                  <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                  <div class="d-flex flex-column flex-sm-row justify-content-between border-top">
                     <p>© 2023 SMAN 1 KERINCI, Inc. All rights reserved.</p>
                     <ul class="list-unstyled d-flex">
                       <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
