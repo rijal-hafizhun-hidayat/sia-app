@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Mapel\Service;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\TahunAjaran\Services\TahunAjaranServiceController;
+// use App\Http\Controllers\TahunAjaran\Services\TahunAjaranServiceController;
 use App\Http\Requests\Mapel\StoreMapelRequest;
 use App\Models\Mapel;
 use Illuminate\Support\Facades\Auth;
 
 class MapelServiceController extends Controller
 {
-    protected $tahunAjaranService;
-    public function __construct(TahunAjaranServiceController $tahunAjaranService)
-    {
-        $this->tahunAjaranService = $tahunAjaranService;
-    }
+    // protected $tahunAjaranService;
+    // public function __construct(TahunAjaranServiceController $tahunAjaranService)
+    // {
+    //     $this->tahunAjaranService = $tahunAjaranService;
+    // }
 
     public function getMapel(){
         return Mapel::latest()->get();
